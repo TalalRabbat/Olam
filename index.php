@@ -19,14 +19,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="./images/giepa.png">
+  <link rel="icon" href="./images/icon.png">
   <!--Opening code for bootstrap and login-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="Talal Rabat">
   <meta name="generator" content="Jekyll v3.8.6">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ 
   <meta name="theme-color" content="#563d7c">
   <!--Title of webpage-->
   <title>Giuliani Inc.</title>
@@ -44,16 +45,18 @@
       align-items: center;
       padding-top: 40px;
       padding-bottom: 40px;
-      background: url("/images/giepa.png");
       background-repeat: no-repeat, repeat;
       background-position: center;
     }
-    /*set style for signin form*/
+   /*set style for signin form*/
+
     .form-signin {
+      text-align: center;
       width: 100%;
       max-width: 330px;
       padding: 15px;
       margin: auto;
+
     }
     set style for sin
     .form-signin .checkbox {
@@ -62,7 +65,7 @@
 
     .form-signin .form-control {
       position: relative;
-      box-sizing: border-box;
+      box-sizing: content-box;
       height: auto;
       padding: 10px;
       font-size: 16px;
@@ -73,15 +76,19 @@
     }
 
     .form-signin input[type="text"] {
-      margin-bottom: -1px;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
     }
 
     .form-signin input[type="password"] {
-      margin-bottom: 10px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
+      width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
     }
 
     .form-signin input[type="submit"] {
@@ -104,23 +111,39 @@
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
-        user-select: none;
+        user-select: none;        
       }
 
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
         }
+          .section {
+            height: 100vm;
+            margin-bottom: 450px;
+
+
+          }
       }
     </style>
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
+
   </head>
   <body class="text-center">
-    <form class="form-signin" method="post" action="">
-      <img class="mb-4" src="/images/giepa.png" alt="Logo " style="width: 80%;">
+    
+    
+  <div class="section">
 
-      <h1 class="h3 mb-3 font-weight-normal">Please LogIn</h1>
+     <video autoplay="true" loop="true" muted>
+      <source src="/images/video.mp4" type="video/mp4">
+     </video> 
+     
+     
+    
+    <form class="form-signin" method="post" action="">
+      
+      <h2 class="h3 mb-3 font-weight-normal">Please LogIn</h2>
 
       <h6 class="h6 mb-6 font-weight-normal text-danger"><?php echo $error; ?></h6>
 
@@ -131,13 +154,19 @@
       <label for="inputPassword" class="sr-only">Password</label>
 
       <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-	  
+
       <div class="checkbox mb-3"></div>
 
       <input value="LogIn" name="submit" class="btn btn-lg btn-primary btn-block" type="submit">
 
-      <p class="mt-5 mb-3 text-muted">Company Name &copy; Copyright <?php echo date("Y"); ?></p>
+
+
+      <p class="mt-5 mb-3 text-muted">Olam &copy; Copyright <?php echo date("Y"); ?></p>
+
+      
     </form>
+  </div>
+  
   </body>
 </html>
 <?php 
