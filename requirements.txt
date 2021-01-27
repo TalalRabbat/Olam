@@ -1,0 +1,37 @@
+requirements:
+
+2 queries:
+	Temp (C) for all stations South Atlantic Ocean. History 4 weeks
+	
+	Realtime table windspeed (km/h) and direction for all stations in The Gambia and in 1000km radius Atlantic Ocean. History 2 minutes
+-----------------------------------------------------
+Services:
+	Wind in graph (optional)
+
+	Correct faulty data
+	
+	Table data downloadable .xml file
+-----------------------------------------------------
+Security:
+	1 ID and password login (make one ourselves)
+-----------------------------------------------------'
+GUI functionality:
+	In-browser
+	
+	Line graph for windspeed (optional, otherwise table)
+
+	Can get graph per individual station
+
+	In English
+
+	Google maps-like (optional)
+-----------------------------------------------------
+GUI design:
+	Use of company colours & logo (Red: DC292A, Blue: 184893)
+
+	Easily recognisable
+
+	User friendly
+-----------------------------------------------------
+Username: user
+Password: GAINEXPRAG2020
