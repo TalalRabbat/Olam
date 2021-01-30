@@ -143,7 +143,7 @@
     var contentStringMonteVideo         = contentStringOpen + 'Monte  Video'+
                                       contentStringMiddle + '617010' + contentStringEnd;
     //initialize and set contentString Atlantic station
-    var contentStringAtlantic       = contentStringOpen + 'SAL' +
+    var contentStringAtlantic       = contentStringOpen + 'Buenos Aires' +
                                       contentStringMiddle + '85940'  + contentStringEnd;
     //initialize and set contentString South Atlantic station 1
     var contentStringRiosGallegos = contentStringOpen + 'Rios Gallegos' +
@@ -180,13 +180,13 @@
       //initialize coordinate variables for the weather stations and geolocation
       var pos_geolocation;                                 
       var montevideo        = {lat: -34.905,     lng: -56.161};   // 
-      var atlantic          = {lat: -34.605,   lng: -58.380};   // 85940
+      var buenosaires          = {lat: -34.605,   lng: -58.380};   // 85940
       var riosgallegos      = {lat: -51.623,   lng: -69.218};    // 619020
       var santiago          = {lat: -33.450,  lng: -70.668};    // 889030
       var lima              = {lat: -12.050,  lng: -77.051};   // 888890
       var bogota            = {lat: 4.711,    lng: -74.072};  // 888900
       var caracas           = {lat: 10.478,  lng: -66.904};  // 888910
-      var salvador          = {lat: -17.979,   lng: -38.503};   // 689060
+      var salvador          = {lat: -12.979,   lng: -38.503};   // 689060
 
       //create map element
       map = new google.maps.Map(document.getElementById('map'), {
@@ -204,7 +204,7 @@
       })
       //place Atlantic marker on map 
       markerAtlantic = new google.maps.Marker( {
-        position: atlantic,
+        position: buenosaires,
         map: map,
         url: 'view_station.php?station=85940',
         title: 'SAL'
@@ -260,7 +260,7 @@
       });
       //add infoWindow for Atlantic station marker
       infoWindowAtlantic = new google.maps.InfoWindow( {
-        position: atlantic,
+        position: buenosaires,
         content: contentStringAtlantic
       });
       //add infoWindow for South Atlantic 1 station marker
