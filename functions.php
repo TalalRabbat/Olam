@@ -4,7 +4,9 @@
 	$USER_PASSWORD = '$argon2i$v=19$m=1024,t=2,p=2$RGVNME4weFFwMmMyd01IZw$a28OeXYplLovOamT/0VITKf3kMsWi+mQVMJjAVKlxcw';
 
 	// Array of the stations used for this project
-	$allowed_stations = array("863150" => "Bella Union", "617010" => "Monte Video", "85940" => "Buenos Aires", "619020" => "Rios Gallegos", "889030" => "Santiago", "888890" => "Lima", "888900" => "Bogota", "888910" => "Caracas", "689060" => "Salvador");
+	$allowed_stations = array("863150" => "Bella Union", "863300" => "Artigas", "617010" => "Monte Video", "85940" => "Buenos Aires", "619020" => "Rios Gallegos", "889030" => "Santiago", "888890" => "Lima", "888900" => "Bogota", "888910" => "Caracas", "689060" => "Salvador",
+								"863500" => "Rivera","863600" => "Salto","864300" => "Paysandu","864400" => "Melo","864600" => "Paso del Ostoros","864900" => "Mercedes","865000" => "Treinta y Tres","865300" => "Durazno","865450" => "Florida","865600" => "Colonia","865650" => "Rocha",
+								"865750" => "Melilla", "865800" => "Carrasco","865823" => "Capitan Corbetaca","865850" => "Prado","865860" => "Laguna del Sauce",);
 	$stations_temp = array(889030, 888890, 888900, 888910, 689060, 619020);
 	$stations_wind = array(617010, 85940);
 	/* This function compares username and password credentials
