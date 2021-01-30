@@ -63,7 +63,7 @@
       color: #7D7D7D;
     }
 
-    }
+    
   </style>
 </head>
 <!--Website body-->
@@ -126,12 +126,12 @@
     var map;
 
     //initialize marker variables
-    var markerGeolocation, markerGambia, markerAtlantic, markerSouthAtlantic1,
-      markerSouthAtlantic2, markerSouthAtlantic3, markerSouthAtlantic5, markerSouthAtlantic6;
+    var markerGeolocation, markerMonteVideo, markerAtlantic, markerRiosGallegos,
+      markerSantiago, markerLima, markerCaracas, markerSalvador;
 
     //initialize infoWindow variables
-    var activeInfoWindow, infoWindowGeolocation, infoWindowGambia, infoWindowAtlantic, 
-      infoWindowSouthAtlantic1, infoWindowSouthAtlantic2, infoWindowSouthAtlantic3, 
+    var activeInfoWindow, infoWindowGeolocation, infoWindowMonteVideo, infoWindowAtlantic, 
+      infoWindowRiosGallegos, infoWindowSouthAtlantic2, infoWindowSouthAtlantic3, 
       infoWindowSouthAtlantic4, infoWindowSouthAtlantic5, infoWindowSouthAtlantic6;
 
     //initialize and set repeat strings for contentString variables
@@ -140,13 +140,13 @@
     var contentStringEnd     = '" role="button">Select this station</a></div>'
 
     //initialize and set contentString Gambia station
-    var contentStringGambia         = contentStringOpen + 'BANJUL/YUNDUM'+
+    var contentStringMonteVideo         = contentStringOpen + 'Monte  Video'+
                                       contentStringMiddle + '617010' + contentStringEnd;
     //initialize and set contentString Atlantic station
     var contentStringAtlantic       = contentStringOpen + 'SAL' +
                                       contentStringMiddle + '85940'  + contentStringEnd;
     //initialize and set contentString South Atlantic station 1
-    var contentStringSouthAtlantic1 = contentStringOpen + 'WIDE AWAKE FIELD' +
+    var contentStringRiosGallegos = contentStringOpen + 'Rios Gallegos' +
                                       contentStringMiddle + '619020' + contentStringEnd;
     //initialize and set contentString South Atlantic station 2
     var contentStringSouthAtlantic2 = contentStringOpen + 'GRYTVIKEN S.GEORGIA' +
@@ -178,29 +178,29 @@
     //this function initiates the map
     function initMap() {
       //initialize coordinate variables for the weather stations and geolocation
-      var pos_geolocation;                                   
-      var gambia                  = {lat: 13.2,     lng: -16.633};  // 617010
-      var atlantic                = {lat: 16.733,   lng: -22.95};   // 85940
-      var south_atlantic_ocean_1  = {lat: -7.967,   lng: -14.4};    // 619020
-      var south_atlantic_ocean_2  = {lat: -54.267,  lng: -36.5};    // 889030
-      var south_atlantic_ocean_3  = {lat: -51.817,  lng: -58.45};   // 888890
-      var south_atlantic_ocean_4  = {lat: -51.7,    lng: -57.867};  // 888900
-      var south_atlantic_ocean_5  = {lat: -51.683,  lng: -57.767};  // 888910
-      var south_atlantic_ocean_6  = {lat: -40.35,   lng: -9.883};   // 689060
+      var pos_geolocation;                                 
+      var montevideo        = {lat: -34.905,     lng: -56.161};   // 
+      var atlantic          = {lat: -34.605,   lng: -58.380};   // 85940
+      var riosgallegos      = {lat: -51.623,   lng: -69.218};    // 619020
+      var santiago          = {lat: -33.450,  lng: -70.668};    // 889030
+      var lima              = {lat: -12.050,  lng: -77.051};   // 888890
+      var bogota            = {lat: 4.711,    lng: -74.072};  // 888900
+      var caracas           = {lat: 10.478,  lng: -66.904};  // 888910
+      var salvador          = {lat: -17.979,   lng: -38.503};   // 689060
 
       //create map element
       map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
-        center: gambia 
+        center: montevideo 
       });
 
       /**THE FOLLOWING CODE CREATES THE MARKERS FOR THE MAP**/
-      //place Gambia marker on map
-      markerGambia = new google.maps.Marker( {
-        position: gambia,
+      //montevideo marker
+      markerMonteVideo = new google.maps.Marker( {
+        position: montevideo,
         map: map,
         url: 'view_station.php?station=617010',
-        title: 'BANJUL/YUNDUM'
+        title: 'Monte Video'
       })
       //place Atlantic marker on map 
       markerAtlantic = new google.maps.Marker( {
@@ -209,54 +209,54 @@
         url: 'view_station.php?station=85940',
         title: 'SAL'
       });
-      //place South Atlantic 1 marker on map 
-      markerSouthAtlantic1 = new google.maps.Marker( {
-        position: south_atlantic_ocean_1,
+      //Rios Gallegos marker
+      markerRiosGallegos = new google.maps.Marker( {
+        position: riosgallegos,
         map: map,
         url: 'view_station.php?station=619020',
-        title: 'WIDE AWAKE FIELD'
+        title: 'Rios Gallegos'
       });
-      //place South Atlantic 2 marker on map 
-      markerSouthAtlantic2 = new google.maps.Marker( {
-        position: south_atlantic_ocean_2,
+      //Santiago marker  
+      markerSantiago = new google.maps.Marker( {
+        position: santiago,
         map: map,
         url: 'view_station.php?station=889030',
-        title: 'GRYTVIKEN S.GEORGIA'
+        title: 'Santiago'
       });
-      //place South Atlantic 3 marker on map 
-      markerSouthAtlantic3 = new google.maps.Marker( {
-        position: south_atlantic_ocean_3,
+      //Lima marker 
+      markerLima = new google.maps.Marker( {
+        position: lima,
         map: map,
         url: 'view_station.php?station=888890',
-        title: 'MOUNT PLEASANT AIRP'
+        title: 'Lima'
       });
-      //place South Atlantic 4 marker on map 
-      markerSouthAtlantic4 = new google.maps.Marker( {
-        position: south_atlantic_ocean_4,
+      //Bogota marker
+      markerBogota = new google.maps.Marker( {
+        position: bogota,
         map: map,
         url: 'view_station.php?station=888900',
-        title: 'STANLEY'
+        title: 'Bogota'
       });
-      //place South Atlantic 5 marker on map 
-      markerSouthAtlantic5 = new google.maps.Marker( {
-        position: south_atlantic_ocean_5,
+      //Caracas marker
+      markerCaracas = new google.maps.Marker( {
+        position: caracas,
         map: map,
         url: 'view_station.php?station=888910',
-        title: 'STANLY AIRPORT'
+        title: 'Caracas'
       });
-      //place South Atlantic 6 marker on map 
-      markerSouthAtlantic6 = new google.maps.Marker( {
-        position: south_atlantic_ocean_6,
+      //Salvador marker
+      markerSalvador = new google.maps.Marker( {
+        position: salvador,
         map: map,
         url: 'view_station.php?station=689060',
-        title: 'GOUGH ISLAND'
+        title: 'Salvador'
       });
 
       /**THE FOLLOWING CODE CREATES THE INFOWINDOWS FOR THE MARKERS**/
       //add infoWindow for Gambia station marker
-      infoWindowGambia = new google.maps.InfoWindow( {
-        position: gambia,
-        content: contentStringGambia
+      infoWindowMonteVideo = new google.maps.InfoWindow( {
+        position: montevideo,
+        content: contentStringMonteVideo
       });
       //add infoWindow for Atlantic station marker
       infoWindowAtlantic = new google.maps.InfoWindow( {
@@ -264,66 +264,66 @@
         content: contentStringAtlantic
       });
       //add infoWindow for South Atlantic 1 station marker
-      infoWindowSouthAtlantic1 = new google.maps.InfoWindow( {
-        position: south_atlantic_ocean_1,
-        content: contentStringSouthAtlantic1
+      infoWindowRiosGallegos = new google.maps.InfoWindow( {
+        position: riosgallegos,
+        content: contentStringRiosGallegos
       });
       //add infoWindow for South Atlantic 2 station marker
       infoWindowSouthAtlantic2 = new google.maps.InfoWindow( {
-        position: south_atlantic_ocean_2,
+        position: santiago,
         content: contentStringSouthAtlantic2
       });
       //add infoWindow for South Atlantic 3 station marker
       infoWindowSouthAtlantic3 = new google.maps.InfoWindow( {
-        position: south_atlantic_ocean_3,
+        position: lima,
         content: contentStringSouthAtlantic3
       });
       //add infoWindow for South Atlantic 4 station marker
       infoWindowSouthAtlantic4 = new google.maps.InfoWindow( {
-        position: south_atlantic_ocean_4,
+        position: bogota,
         content: contentStringSouthAtlantic4
       });
       //add infoWindow for South Atlantic 5 station marker
       infoWindowSouthAtlantic5 = new google.maps.InfoWindow( {
-        position: south_atlantic_ocean_5,
+        position: caracas,
         content: contentStringSouthAtlantic5
       });
       //add infoWindow for South Atlantic 6 station marker
       infoWindowSouthAtlantic6 = new google.maps.InfoWindow( {
-        position: south_atlantic_ocean_6,
+        position: salvador,
         content: contentStringSouthAtlantic6
       });
 
       //add mouse click Listener for Gambia marker
-      markerGambia.addListener('click', function() {
-        clickEvent(map, infoWindowGambia);
+      markerMonteVideo.addListener('click', function() {
+        clickEvent(map, infoWindowMonteVideo);
       });
       //add mouse click Listener for Atlantic marker
       markerAtlantic.addListener('click', function() {
         clickEvent(map, infoWindowAtlantic);
       });
       //add mouse click Listener for South Atlantic marker 1
-      markerSouthAtlantic1.addListener('click', function() {
-        clickEvent(map, infoWindowSouthAtlantic1);
+      markerRiosGallegos.addListener('click', function() {
+        clickEvent(map, infoWindowRiosGallegos);
       });
       //add mouse click Listener for South Atlantic marker 2
-      markerSouthAtlantic2.addListener('click', function() {
+      markerSantiago.addListener('click', function() {
         clickEvent(map, infoWindowSouthAtlantic2);
       });
       //add mouse click Listener for South Atlantic marker 3
-      markerSouthAtlantic3.addListener('click', function() {
+      markerLima.addListener('click', function() {
         clickEvent(map, infoWindowSouthAtlantic3);
       });
       //add mouse click Listener for South Atlantic marker 4
-      markerSouthAtlantic4.addListener('click', function() {
+      markerBogota.addListener('click', function() {
         clickEvent(map, infoWindowSouthAtlantic4);
       });
       //add mouse click Listener for South Atlantic marker 5
-      markerSouthAtlantic5.addListener('click', function() {
+      markerCaracas.addListener('click', function() {
         clickEvent(map, infoWindowSouthAtlantic5);
       });
       //add mouse click Listener for South Atlantic marker 6
-      markerSouthAtlantic6.addListener('click', function() {
+      markerSalvador.addListener('click', function() {
         clickEvent(map, infoWindowSouthAtlantic6);
       });
 
@@ -333,7 +333,7 @@
        * to press the 'select station' button
        */
       //add double click listener for Gambia marker
-      markerGambia.addListener('dblclick', function() {
+      markerMonteVideo.addListener('dblclick', function() {
         window.location.href = this.url;
       });
       //add double click Listener for Atlantic marker
@@ -341,27 +341,27 @@
         window.location.href = this.url;
       });
       //add double click Listener for South Atlantic marker 1
-      markerSouthAtlantic1.addListener('dblclick', function() {
+      markerRiosGallegos.addListener('dblclick', function() {
         window.location.href = this.url;
       });
       //add double click Listener for South Atlantic marker 2
-      markerSouthAtlantic2.addListener('dblclick', function() {
+      markerSantiago.addListener('dblclick', function() {
         window.location.href = this.url;
       });
       //add double click Listener for South Atlantic marker 3
-      markerSouthAtlantic3.addListener('dblclick', function() {
+      markerLima.addListener('dblclick', function() {
         window.location.href = this.url;
       });
       //add double click Listener for South Atlantic marker 4
-      markerSouthAtlantic4.addListener('dblclick', function() {
+      markerBogota.addListener('dblclick', function() {
         window.location.href = this.url;
       });
       //add double click Listener for South Atlantic marker 5
-      markerSouthAtlantic5.addListener('dblclick', function() {
+      markerCaracas.addListener('dblclick', function() {
         window.location.href = this.url;
       });
       //add double click Listener for South Atlantic marker 6
-      markerSouthAtlantic6.addListener('dblclick', function() {
+      markerSalvador.addListener('dblclick', function() {
         window.location.href = this.url;
       });
 
@@ -405,7 +405,7 @@
         handleLocationError(false, infoWindowGeolocation, map.getCenter());
       }
       //Gambia infoWindow link to activeInfoWindow
-      activeInfoWindow = infoWindowGambia;
+      activeInfoWindow = infoWindowMonteVideo;
     }
     // This function handles errors for geolocation
     function handleLocationError(browserHasGeolocation, infoWindowGeolocation, pos_geolocation) {
@@ -421,7 +421,7 @@
   * The key parameter will contain your own API key (which is not needed for this tutorial)
   * The callback parameter executes the initMap() function-->
   <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDupy91HDLCEYrvsBj32obYqZhbFmg5dPg&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjwCaVgOh0wgk15tAVeIqk51V3oUHi9tQ&callback=initMap">
   </script>
   <!--footer-->
   <footer> <small> &copy; Copyright <?php echo date("Y"); ?> Olam International All Rights Reserved Co. Reg. No. 199504676H </small> </footer>
