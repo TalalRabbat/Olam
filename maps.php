@@ -139,28 +139,28 @@
     var contentStringMiddle  = '</h5><a class="btn btn-primary" href="view_station.php?station=';
     var contentStringEnd     = '" role="button">Select this station</a></div>'
 
-    //initialize and set contentString Gambia station
+    //initialize and set contentString Monte Video
     var contentStringMonteVideo         = contentStringOpen + 'Monte  Video'+
                                       contentStringMiddle + '617010' + contentStringEnd;
-    //initialize and set contentString Atlantic station
-    var contentStringAtlantic       = contentStringOpen + 'Buenos Aires' +
+    //initialize and set contentString BuenosAires
+    var contentBuenosAires       = contentStringOpen + 'Buenos Aires' +
                                       contentStringMiddle + '85940'  + contentStringEnd;
-    //initialize and set contentString South Atlantic station 1
+    //initialize and set contentString Rios Gallegos
     var contentStringRiosGallegos = contentStringOpen + 'Rios Gallegos' +
                                       contentStringMiddle + '619020' + contentStringEnd;
-    //initialize and set contentString South Atlantic station 2
+    //initialize and set contentString Santiago
     var contentStringSantiago = contentStringOpen + 'Santiago' +
                                       contentStringMiddle + '889030' + contentStringEnd;
-    //initialize and set contentString South Atlantic station 3
+    //initialize and set contentString Lima
     var contentStringLima = contentStringOpen + 'Lima' +
                                       contentStringMiddle + '888890' + contentStringEnd;
-    //initialize and set contentString South Atlantic station 4
+    //initialize and set contentString Bogota
     var contentStringBogota = contentStringOpen + 'Bogota' +
                                       contentStringMiddle + '888900' + contentStringEnd;
-    //initialize and set contentString South Atlantic station 5
+    //initialize and set contentString Caracas
     var contentStringCaracas = contentStringOpen + 'Caracas' +
                                       contentStringMiddle + '888910' + contentStringEnd;
-    //initialize and set contentString South Atlantic station 6
+    //initialize and set contentString Salvador
     var contentStringSalvador = contentStringOpen + 'Salvador' +
                                       contentStringMiddle + '689060' + contentStringEnd;
 
@@ -261,7 +261,7 @@
       //add infoWindow for Atlantic station marker
       infoWindowAtlantic = new google.maps.InfoWindow( {
         position: buenosaires,
-        content: contentStringAtlantic
+        content: contentBuenosAires
       });
       //add infoWindow for South Atlantic 1 station marker
       infoWindowRiosGallegos = new google.maps.InfoWindow( {
