@@ -154,8 +154,10 @@
       <div class="d-flex justify-content-center align-items-center h-100">
         <div class="text-white">
           <h1 class="mb-3">Welcome to the Olam Weather Application!</h1>
-          <h4 class="mb-3"><strong> Write here more informetion about this site.....</strong> </h4>
-        </div>
+			<!-- 
+		  <h4 class="mb-3"><strong> Write here more informetion about this site.....</strong> </h4>
+			-->		
+		</div>
       </div>
     </div>
   </div>
