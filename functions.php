@@ -4,7 +4,7 @@
 	$USER_PASSWORD = '$argon2i$v=19$m=1024,t=2,p=2$RGVNME4weFFwMmMyd01IZw$a28OeXYplLovOamT/0VITKf3kMsWi+mQVMJjAVKlxcw';
 
 	// Array of the stations used for this project
-	$allowed_stations = array("617010" => "BANJUL/YUNDUM", "85940" => "SAL", "619020" => "WIDE AWAKE FIELD", "889030" => "GRYTVIKEN S.GEORGIA", "888890" => "MOUNT PLEASANT AIRP", "888900" => "STANLEY", "888910" => "STANLEY AIRPORT", "689060" => "GOUGH ISLAND");
+	$allowed_stations = array("617010" => "Monte Video", "85940" => "SAL", "619020" => "Rios Gallegos", "889030" => "Santiago", "888890" => "Lima", "888900" => "Bogota", "888910" => "Caracas", "689060" => "Salvador");
 	$stations_temp = array(889030, 888890, 888900, 888910, 689060, 619020);
 	$stations_wind = array(617010, 85940);
 	/* This function compares username and password credentials
