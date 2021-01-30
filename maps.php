@@ -126,22 +126,24 @@
     var map;
 
     //initialize marker variables
-    var markerGeolocation, markerMonteVideo, markerBuenosAires, markerRiosGallegos,
-      markerSantiago, markerLima, markerCaracas, markerSalvador;
+    var markerGeolocation, markerBuenosAires, markerRiosGallegos,
+      markerSantiago, markerLima, markerCaracas, markerSalvador, 
+      markerBellaUnion;
 
     //initialize infoWindow variables
-    var activeInfoWindow, infoWindowGeolocation, infoWindowMonteVideo, infoWindowAtlantic, 
+    var activeInfoWindow, infoWindowGeolocation, infoWindowBuenosAires, 
       infoWindowRiosGallegos, infoWindowSantiago, infoWindowLima, 
-      infoWindowBogota, infoWindowCaracas, infoWindowSalvador;
+      infoWindowBogota, infoWindowCaracas, infoWindowSalvador,
+      infoWindowBellaUnion;
 
     //initialize and set repeat strings for contentString variables
     var contentStringOpen    = '<div id="content"><h5>';
     var contentStringMiddle  = '</h5><a class="btn btn-primary" href="view_station.php?station=';
     var contentStringEnd     = '" role="button">Select this station</a></div>'
 
-    //initialize and set contentString Monte Video
-    var contentStringMonteVideo         = contentStringOpen + 'Monte  Video'+
-                                      contentStringMiddle + '617010' + contentStringEnd;
+    //initialize and set contentString 
+    var contentStringBellaUnion         = contentStringOpen + 'Bella Union'+
+                                      contentStringMiddle + '863150' + contentStringEnd;
     //initialize and set contentString BuenosAires
     var contentBuenosAires       = contentStringOpen + 'Buenos Aires' +
                                       contentStringMiddle + '85940'  + contentStringEnd;
@@ -181,21 +183,24 @@
       var pos_geolocation;                                 
       
       //Uruguay
-      var montevideo      = {lat: -34.905, lng: -56.161};   //617010
-      var maldonado       = {lat: -34.902, lng: -54.961};   //617121
-      var puntadeldiablo  = {lat: -34.042, lng: -53.548};   //617232
-      var melo            = {lat: -32.364, lng: -54.168};   
-      var moirones        = {lat: -31.604, lng: -54.985};
-      var artigas         = {lat: -30.407, lng: -56.478};
-      var monesquintela   = {lat: -30.374, lng: -57.664};
-      var belen           = {lat: -30.788, lng: -57.777};
-      var salto           = {lat: -31.388, lng: -57.962};
-      var paysandu        = {lat: -32.312, lng: -58.076};
-      var mercedes        = {lat: -33.254, lng: -58.027};
-      var laconcordia     = {lat: -33.566, lng: -58.425};
-      var nuevapalmira    = {lat: -33.877, lng: -58.401};
-      var realdesancarlos = {lat: -34.439, lng: -57.862};
-      var lapaloma        = {lat:-32.725,  lng: -55.583};
+      var bellaunion      ={lat: -30.267, lng: -57.583};//863150
+      var artigas         ={lat: -30.383, lng: -56.5};  //863300
+      var rivera          ={lat: -30.883,lng: -55.533}; //863500
+      var salto           ={lat: -31.383,lng: -57.95};  //863600
+      var paysandu        ={lat:-32.333,lng: -58.033};  //864300
+      var melo            ={lat:-32.366,lng: -54.183};  //864400
+      var pasodelostoros  ={lat:-32.8,lng: -56.517};    //864600
+      var mercedes        ={lat:-33.25,lng: -58.067};   //864900
+      var treintaytres    ={lat:-33.217,lng: -54.383};  //865000
+      var durazno         ={lat:-33.35,lng: -56.5};     //865300
+      var florida         ={lat:-34.067,lng: -56.233};  //865450
+      var colonia         ={lat:-34.45,lng: -57.833};   //865600
+      var rocha           ={lat:-34.483,lng: -54.3};    //865650
+      var melilla         ={lat:-34.783,lng: -56.25};   //865750
+      var carrasco        ={lat:-34.833,lng: -56};      //865800
+      var capitancorbetaca={lat:-34.85,lng: -55.083};   //865823
+      var prado           ={lat:-34.85,lng: -56.2};     //865850
+      var lagunadelsauce  ={lat:-34.867,lng: -55.1};    //865860
 
       //South America
       var buenosaires          = {lat: -34.605,   lng: -58.380};   // 85940
@@ -209,17 +214,121 @@
       //create map element
       map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
-        center: montevideo 
+        center: bellaunion 
       });
 
       /**THE FOLLOWING CODE CREATES THE MARKERS FOR THE MAP**/
-      //montevideo marker
-      markerMonteVideo = new google.maps.Marker( {
-        position: montevideo,
+      markerBellaUnion = new google.maps.Marker( {
+        position: bellaunion,
         map: map,
-        url: 'view_station.php?station=617010',
-        title: 'Monte Video'
+        url: 'view_station.php?station=863150',
+        title: 'Bella Union'
       })
+      
+      markerArtigas = new google.maps.Marker( {
+        position: artigas,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Artigas'
+      })
+      markerRivera = new google.maps.Marker( {
+        position: rivera,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Rivera'
+      })
+      markerSalto = new google.maps.Marker( {
+        position: salto,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Salto'
+      })
+      markerPaysandu = new google.maps.Marker( {
+        position: paysandu,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Paysandu'
+      })
+      markerMelo = new google.maps.Marker( {
+        position: melo,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Melo'
+      })
+      markerPasodelOstoros = new google.maps.Marker( {
+        position: pasodelostoros,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Paso del Ostoros'
+      })
+      markerMercedes = new google.maps.Marker( {
+        position: mercedes,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Mercedes'
+      })
+      markerTreintaYTres = new google.maps.Marker( {
+        position: treintaytres,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Treinta Y Tres'
+      })
+      markerDurazno = new google.maps.Marker( {
+        position: durazno,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Durzano'
+      })
+      markerFlorida = new google.maps.Marker( {
+        position: florida,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Florida'
+      })
+      markerColonia = new google.maps.Marker( {
+        position: colonia,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Colonia'
+      })
+      markerRocha = new google.maps.Marker( {
+        position: rocha,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Rocha'
+      })
+      markerMelilla = new google.maps.Marker( {
+        position: melilla,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Melilla'
+      })
+      markerCarrasco = new google.maps.Marker( {
+        position: carrasco,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Carrasco'
+      })
+      markerCaptainCorbetaca = new google.maps.Marker( {
+        position: capitancorbetaca,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Captain Corbetaca'
+      })
+      markerPrado = new google.maps.Marker( {
+        position: prado,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Prado'
+      })
+      markerLagunadelSauce = new google.maps.Marker( {
+        position: lagunadelsauce,
+        map: map,
+        url: 'view_station.php?station=863150',
+        title: 'Laguna del Sauce'
+      })
+
+      
       //place Buenos Aires marker 
       markerBuenosAires = new google.maps.Marker( {
         position: buenosaires,
@@ -271,76 +380,62 @@
       });
 
       /**THE FOLLOWING CODE CREATES THE INFOWINDOWS FOR THE MARKERS**/
-      //add infoWindow for Gambia station marker
-      infoWindowMonteVideo = new google.maps.InfoWindow( {
-        position: montevideo,
-        content: contentStringMonteVideo
+      //add infoWindows for all markers
+      infoWindowBellaUnion = new google.maps.InfoWindow( {
+        position: bellaunion,
+        content: contentStringBellaUnion
       });
-      //add infoWindow for Atlantic station marker
-      infoWindowAtlantic = new google.maps.InfoWindow( {
+      infoWindowBuenosAires = new google.maps.InfoWindow( {
         position: buenosaires,
         content: contentBuenosAires
       });
-      //add infoWindow for South Atlantic 1 station marker
       infoWindowRiosGallegos = new google.maps.InfoWindow( {
         position: riosgallegos,
         content: contentStringRiosGallegos
       });
-      //add infoWindow for South Atlantic 2 station marker
       infoWindowSantiago = new google.maps.InfoWindow( {
         position: santiago,
         content: contentStringSantiago
       });
-      //add infoWindow for South Atlantic 3 station marker
       infoWindowLima = new google.maps.InfoWindow( {
         position: lima,
         content: contentStringLima
       });
-      //add infoWindow for South Atlantic 4 station marker
       infoWindowBogota = new google.maps.InfoWindow( {
         position: bogota,
         content: contentStringBogota
       });
-      //add infoWindow for South Atlantic 5 station marker
       infoWindowCaracas = new google.maps.InfoWindow( {
         position: caracas,
         content: contentStringCaracas
       });
-      //add infoWindow for South Atlantic 6 station marker
       infoWindowSalvador = new google.maps.InfoWindow( {
         position: salvador,
         content: contentStringSalvador
       });
 
-      //add mouse click Listener for Gambia marker
-      markerMonteVideo.addListener('click', function() {
-        clickEvent(map, infoWindowMonteVideo);
+      //add mouse click listeners for every marker
+      markerBellaUnion.addListener('click', function() {
+        clickEvent(map, infoWindowBellaUnion);
       });
-      //add mouse click Listener for Atlantic marker
       markerBuenosAires.addListener('click', function() {
-        clickEvent(map, infoWindowAtlantic);
+        clickEvent(map, infoWindowBuenosAires);
       });
-      //add mouse click Listener for South Atlantic marker 1
       markerRiosGallegos.addListener('click', function() {
         clickEvent(map, infoWindowRiosGallegos);
       });
-      //add mouse click Listener for South Atlantic marker 2
       markerSantiago.addListener('click', function() {
         clickEvent(map, infoWindowSantiago);
       });
-      //add mouse click Listener for South Atlantic marker 3
       markerLima.addListener('click', function() {
         clickEvent(map, infoWindowLima);
       });
-      //add mouse click Listener for South Atlantic marker 4
       markerBogota.addListener('click', function() {
         clickEvent(map, infoWindowBogota);
       });
-      //add mouse click Listener for South Atlantic marker 5
       markerCaracas.addListener('click', function() {
         clickEvent(map, infoWindowCaracas);
       });
-      //add mouse click Listener for South Atlantic marker 6
       markerSalvador.addListener('click', function() {
         clickEvent(map, infoWindowSalvador);
       });
@@ -350,35 +445,28 @@
        * you straight to its graph data, instead of having
        * to press the 'select station' button
        */
-      //add double click listener for Monte Video marker
-      markerMonteVideo.addListener('dblclick', function() {
-        window.location.href = this.url;
+      //add double click listeners for all markers
+      markerBellaUnion.addListener('dbclick', function() {
+        clickEvent(map, infoWindowBellaUnion);
       });
-      //add double click Listener for Atlantic marker
       markerBuenosAires.addListener('dblclick', function() {
         window.location.href = this.url;
       });
-      //add double click Listener for Rios Gallegos marker
       markerRiosGallegos.addListener('dblclick', function() {
         window.location.href = this.url;
       });
-      //add double click Listener for Santiago marker 
       markerSantiago.addListener('dblclick', function() {
         window.location.href = this.url;
       });
-      //add double click Listener for Lima
       markerLima.addListener('dblclick', function() {
         window.location.href = this.url;
       });
-      //add double click Listener for Bogota marker 
       markerBogota.addListener('dblclick', function() {
         window.location.href = this.url;
       });
-      //add double click Listener for Caracas marker 
       markerCaracas.addListener('dblclick', function() {
         window.location.href = this.url;
       });
-      //add double click Listener for Salvador marker
       markerSalvador.addListener('dblclick', function() {
         window.location.href = this.url;
       });
@@ -423,7 +511,7 @@
         handleLocationError(false, infoWindowGeolocation, map.getCenter());
       }
       //Gambia infoWindow link to activeInfoWindow
-      activeInfoWindow = infoWindowMonteVideo;
+      activeInfoWindow = infoWindowBellaUnion;
     }
     // This function handles errors for geolocation
     function handleLocationError(browserHasGeolocation, infoWindowGeolocation, pos_geolocation) {
