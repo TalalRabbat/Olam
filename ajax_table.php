@@ -7,7 +7,7 @@
 	$output = "";
 	if(check_wind_station($station_id) == true){
 		//output the latest dataset of the full data
-		$output .= "<h3 style='color:#7D7D7D;'>Wind measurements</h3><br/><table id='wind_table' style='width:100%;' border='1px'><thead><th>Date and Time</th><th>   Windspeed</th><th>Winddirection</th></thead>";
+		$output .= "<h3 style='color:#7D7D7D;'>Top 5 - Humidity </h3><br/><table id='wind_table' style='width:100%;' border='1px'><thead><th>Date and Time</th><th>   Downfall</th><th>Temperature</th></thead>";
 		$output .= '<tbody onscroll="pauseTable()">';
 		$row = "";
 		for($measurementIndex = 0; $measurementIndex < sizeof($stationdata); $measurementIndex++){
