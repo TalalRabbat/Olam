@@ -126,7 +126,7 @@
     var map;
 
     //initialize marker variables
-    var markerGeolocation, markerMonteVideo, markerAtlantic, markerRiosGallegos,
+    var markerGeolocation, markerMonteVideo, markerBuenosAires, markerRiosGallegos,
       markerSantiago, markerLima, markerCaracas, markerSalvador;
 
     //initialize infoWindow variables
@@ -179,7 +179,25 @@
     function initMap() {
       //initialize coordinate variables for the weather stations and geolocation
       var pos_geolocation;                                 
-      var montevideo        = {lat: -34.905,     lng: -56.161};   // 
+      
+      //Uruguay
+      var montevideo      = {lat: -34.905, lng: -56.161};   //617010
+      var maldonado       = {lat: -34.902, lng: -54.961};   //617121
+      var puntadeldiablo  = {lat: -34.042, lng: -53.548};   //617232
+      var melo            = {lat: -32.364, lng: -54.168};   
+      var moirones        = {lat: -31.604, lng: -54.985};
+      var artigas         = {lat: -30.407, lng: -56.478};
+      var monesquintela   = {lat: -30.374, lng: -57.664};
+      var belen           = {lat: -30.788, lng: -57.777};
+      var salto           = {lat: -31.388, lng: -57.962};
+      var paysandu        = {lat: -32.312, lng: -58.076};
+      var mercedes        = {lat: -33.254, lng: -58.027};
+      var laconcordia     = {lat: -33.566, lng: -58.425};
+      var nuevapalmira    = {lat: -33.877, lng: -58.401};
+      var realdesancarlos = {lat: -34.439, lng: -57.862};
+      var lapaloma        = {lat:-32.725,  lng: -55.583};
+
+      //South America
       var buenosaires          = {lat: -34.605,   lng: -58.380};   // 85940
       var riosgallegos      = {lat: -51.623,   lng: -69.218};    // 619020
       var santiago          = {lat: -33.450,  lng: -70.668};    // 889030
@@ -202,8 +220,8 @@
         url: 'view_station.php?station=617010',
         title: 'Monte Video'
       })
-      //place Atlantic marker on map 
-      markerAtlantic = new google.maps.Marker( {
+      //place Buenos Aires marker 
+      markerBuenosAires = new google.maps.Marker( {
         position: buenosaires,
         map: map,
         url: 'view_station.php?station=85940',
@@ -299,7 +317,7 @@
         clickEvent(map, infoWindowMonteVideo);
       });
       //add mouse click Listener for Atlantic marker
-      markerAtlantic.addListener('click', function() {
+      markerBuenosAires.addListener('click', function() {
         clickEvent(map, infoWindowAtlantic);
       });
       //add mouse click Listener for South Atlantic marker 1
@@ -337,7 +355,7 @@
         window.location.href = this.url;
       });
       //add double click Listener for Atlantic marker
-      markerAtlantic.addListener('dblclick', function() {
+      markerBuenosAires.addListener('dblclick', function() {
         window.location.href = this.url;
       });
       //add double click Listener for Rios Gallegos marker
