@@ -332,7 +332,7 @@
        * you straight to its graph data, instead of having
        * to press the 'select station' button
        */
-      //add double click listener for Gambia marker
+      //add double click listener for Monte Video marker
       markerMonteVideo.addListener('dblclick', function() {
         window.location.href = this.url;
       });
@@ -340,27 +340,27 @@
       markerAtlantic.addListener('dblclick', function() {
         window.location.href = this.url;
       });
-      //add double click Listener for South Atlantic marker 1
+      //add double click Listener for Rios Gallegos marker
       markerRiosGallegos.addListener('dblclick', function() {
         window.location.href = this.url;
       });
-      //add double click Listener for South Atlantic marker 2
+      //add double click Listener for Santiago marker 
       markerSantiago.addListener('dblclick', function() {
         window.location.href = this.url;
       });
-      //add double click Listener for South Atlantic marker 3
+      //add double click Listener for Lima
       markerLima.addListener('dblclick', function() {
         window.location.href = this.url;
       });
-      //add double click Listener for South Atlantic marker 4
+      //add double click Listener for Bogota marker 
       markerBogota.addListener('dblclick', function() {
         window.location.href = this.url;
       });
-      //add double click Listener for South Atlantic marker 5
+      //add double click Listener for Caracas marker 
       markerCaracas.addListener('dblclick', function() {
         window.location.href = this.url;
       });
-      //add double click Listener for South Atlantic marker 6
+      //add double click Listener for Salvador marker
       markerSalvador.addListener('dblclick', function() {
         window.location.href = this.url;
       });
