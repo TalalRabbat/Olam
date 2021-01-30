@@ -1,5 +1,6 @@
 <?php
   include 'functions.php';
+  include 'map_location_creator.php';
 
   /*This code checks if the user is logged in*/
   session_start();
@@ -142,8 +143,26 @@
     var contentStringEnd     = '" role="button">Select this station</a></div>'
 
     //initialize and set contentString 
-    var contentStringBellaUnion         = contentStringOpen + 'Bella Union'+
-                                      contentStringMiddle + '863150' + contentStringEnd;
+    var contentStringBellaUnion       = contentStringOpen + 'Bella Union'+ contentStringMiddle + '863150' + contentStringEnd;
+    var contentStringArtigas          = contentStringOpen + 'Artigas'+ contentStringMiddle + '863300' + contentStringEnd;
+    var contentStringRivera           = contentStringOpen + 'Rivera'+ contentStringMiddle + '863500' + contentStringEnd;        
+    var contentStringSalto            = contentStringOpen + 'Salto'+ contentStringMiddle + '863600' + contentStringEnd;                                           
+    var contentStringPaysandu         = contentStringOpen + 'Paysandu'+ contentStringMiddle + '864300' + contentStringEnd;          
+    var contentStringMelo             = contentStringOpen + 'Melo'+ contentStringMiddle + '864400' + contentStringEnd;          
+    var contentStringPasodelOstoros   = contentStringOpen + 'Pase del Ostoros'+ contentStringMiddle + '864600' + contentStringEnd;   
+    var contentStringMercedes         = contentStringOpen + 'Mercedes'+ contentStringMiddle + '864900' + contentStringEnd;            
+    var contentStringTreintaYTres     = contentStringOpen + 'Treinta y Tres'+ contentStringMiddle + '865000' + contentStringEnd;          
+    var contentStringDurazno          = contentStringOpen + 'Durazno'+ contentStringMiddle + '865300' + contentStringEnd;          
+    var contentStringFlorida          = contentStringOpen + 'Florida'+ contentStringMiddle + '865450' + contentStringEnd;          
+    var contentStringColonia          = contentStringOpen + 'Colonia'+ contentStringMiddle + '865600' + contentStringEnd;          
+    var contentStringRocha            = contentStringOpen + 'Rocha'+ contentStringMiddle + '865650' + contentStringEnd;          
+    var contentStringMelilla          = contentStringOpen + 'Melilla'+ contentStringMiddle + '865750' + contentStringEnd;          
+    var contentStringCarrasco         = contentStringOpen + 'Carrasco'+ contentStringMiddle + '865800' + contentStringEnd;          
+    var contentStringCapitanCorbetaca = contentStringOpen + 'CapitanCorbetaca'+ contentStringMiddle + '865823' + contentStringEnd;          
+    var contentStringPrado            = contentStringOpen + 'Prado'+ contentStringMiddle + '865850' + contentStringEnd;          
+    var contentStringLagunadelSauce   = contentStringOpen + 'LagunadelSauce'+ contentStringMiddle + '865860' + contentStringEnd;          
+    
+
     //initialize and set contentString BuenosAires
     var contentBuenosAires       = contentStringOpen + 'Buenos Aires' +
                                       contentStringMiddle + '85940'  + contentStringEnd;
@@ -218,114 +237,342 @@
       });
 
       /**THE FOLLOWING CODE CREATES THE MARKERS FOR THE MAP**/
+
       markerBellaUnion = new google.maps.Marker( {
         position: bellaunion,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Bella Union'
       })
-      
+      infoWindowBellaUnion = new google.maps.InfoWindow( {
+        position: bellaunion,
+        content: contentStringBellaUnion
+      });      
+      markerBellaUnion.addListener('click', function() {
+        clickEvent(map, infoWindowBellaUnion);
+      });
+      markerBellaUnion.addListener('dbclick', function() {
+        clickEvent(map, infoWindowBellaUnion);
+      });
+
+      //ARTIGAS
       markerArtigas = new google.maps.Marker( {
         position: artigas,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Artigas'
       })
+      infoWindowArtigas = new google.maps.InfoWindow( {
+        position: artigas,
+        content: contentStringArtigas
+      });
+      markerArtigas.addListener('click', function() {
+        clickEvent(map, infoWindowArtigas);
+      });
+      markerBellaUnion.addListener('dbclick', function() {
+        clickEvent(map, infoWindowArtigas);
+      });    
+      
+
+      //RIVERA
       markerRivera = new google.maps.Marker( {
         position: rivera,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Rivera'
       })
+      infoWindowRivera = new google.maps.InfoWindow( {
+        position: rivera,
+        content: contentStringRivera
+      });
+      markerRivera.addListener('click', function() {
+        clickEvent(map, infoWindowRivera);
+      });
+      markerRivera.addListener('dbclick', function() {
+        clickEvent(map, infoWindowRivera);
+      });  
+
+      //SALTO
       markerSalto = new google.maps.Marker( {
         position: salto,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Salto'
       })
+      infoWindowSalto = new google.maps.InfoWindow( {
+        position: salto,
+        content: contentStringSalto
+      });
+      markerSalto.addListener('click', function() {
+        clickEvent(map, infoWindowSalto);
+      });
+      markerSalto.addListener('dbclick', function() {
+        clickEvent(map, infoWindowSalto);
+      });   
+      
+      //PAYSANDU
       markerPaysandu = new google.maps.Marker( {
         position: paysandu,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Paysandu'
       })
+      infoWindowPaysandu = new google.maps.InfoWindow( {
+        position: paysandu,
+        content: contentStringPaysandu
+      });
+      markerPaysandu.addListener('click', function() {
+        clickEvent(map, infoWindowPaysandu);
+      });
+      markerPaysandu.addListener('dbclick', function() {
+        clickEvent(map, infoWindowPaysandu);
+      });  
+
+
+      //MELO
       markerMelo = new google.maps.Marker( {
         position: melo,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Melo'
       })
+      infoWindowMelo = new google.maps.InfoWindow( {
+        position: melo,
+        content: contentStringMelo
+      });
+      markerMelo.addListener('click', function() {
+        clickEvent(map, infoWindowMelo);
+      });
+      markerMelo.addListener('dbclick', function() {
+        clickEvent(map, infoWindowMelo);
+      });  
+
+
+      //PASODELOSTOROS
       markerPasodelOstoros = new google.maps.Marker( {
         position: pasodelostoros,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Paso del Ostoros'
       })
+      infoWindowPasodelOstoros = new google.maps.InfoWindow( {
+        position: pasodelostoros,
+        content: contentStringPasodelOstoros
+      });
+      markerPasodelOstoros.addListener('click', function() {
+        clickEvent(map, infoWindowPasodelOstoros);
+      });
+      markerPasodelOstoros.addListener('dbclick', function() {
+        clickEvent(map, infoWindowPasodelOstoros);
+      });
+
+
+      //MERCEDES
       markerMercedes = new google.maps.Marker( {
         position: mercedes,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Mercedes'
       })
+      infoWindowMercedes = new google.maps.InfoWindow( {
+        position: mercedes,
+        content: contentStringMercedes
+      });
+      markerMercedes.addListener('click', function() {
+        clickEvent(map, infoWindowMercedes);
+      });
+      markerMercedes.addListener('dbclick', function() {
+        clickEvent(map, infoWindowMercedes);
+      });
+
+
+      //TREINTAYTRES
       markerTreintaYTres = new google.maps.Marker( {
         position: treintaytres,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Treinta Y Tres'
       })
+      infoWindowTreintaYTres = new google.maps.InfoWindow( {
+        position: treintaytres,
+        content: contentStringTreintaYTres
+      });
+      markerTreintaYTres.addListener('click', function() {
+        clickEvent(map, infoWindowTreintaYTres);
+      });
+      markerTreintaYTres.addListener('dbclick', function() {
+        clickEvent(map, infoWindowTreintaYTres);
+      });
+
+
+      //DURZANO
       markerDurazno = new google.maps.Marker( {
         position: durazno,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Durzano'
       })
+      infoWindowDurzano = new google.maps.InfoWindow( {
+        position: durazno,
+        content: contentStringDurazno
+      });
+      markerDurazno.addListener('click', function() {
+        clickEvent(map, infoWindowDurzano);
+      });
+      markerDurazno.addListener('dbclick', function() {
+        clickEvent(map, infoWindowDurzano);
+      });
+
+
+      //FLORIDA
       markerFlorida = new google.maps.Marker( {
         position: florida,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Florida'
       })
+      infoWindowFlorida = new google.maps.InfoWindow( {
+        position: florida,
+        content: contentStringFlorida
+      });
+      markerFlorida.addListener('click', function() {
+        clickEvent(map, infoWindowFlorida);
+      });
+      markerFlorida.addListener('dbclick', function() {
+        clickEvent(map, infoWindowFlorida);
+      });
+      
+
+      //COLONIA
       markerColonia = new google.maps.Marker( {
         position: colonia,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Colonia'
       })
+      infoWindowColonia = new google.maps.InfoWindow( {
+        position: colonia,
+        content: contentStringColonia
+      });
+      markerColonia.addListener('click', function() {
+        clickEvent(map, infoWindowColonia);
+      });
+      markerColonia.addListener('dbclick', function() {
+        clickEvent(map, infoWindowColonia);
+      });
+
+
+      //ROCHA
       markerRocha = new google.maps.Marker( {
         position: rocha,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Rocha'
       })
+      infoWindowRocha = new google.maps.InfoWindow( {
+        position: rocha,
+        content: contentStringRocha
+      });
+      markerRocha.addListener('click', function() {
+        clickEvent(map, infoWindowRocha);
+      });
+      markerRocha.addListener('dbclick', function() {
+        clickEvent(map, infoWindowRocha);
+      });
+
+
+      //MELILLA
       markerMelilla = new google.maps.Marker( {
         position: melilla,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Melilla'
       })
+      infoWindowMelilla = new google.maps.InfoWindow( {
+        position: melilla,
+        content: contentStringMelilla
+      });
+      markerMelilla.addListener('click', function() {
+        clickEvent(map, infoWindowMelilla);
+      });
+      markerMelilla.addListener('dbclick', function() {
+        clickEvent(map, infoWindowMelilla);
+      });
+
+
+      //CARRASCO
       markerCarrasco = new google.maps.Marker( {
         position: carrasco,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Carrasco'
       })
+      infoWindowCarrasco = new google.maps.InfoWindow( {
+        position: carrasco,
+        content: contentStringCarrasco
+      });
+      markerCarrasco.addListener('click', function() {
+        clickEvent(map, infoWindowCarrasco);
+      });
+      markerCarrasco.addListener('dbclick', function() {
+        clickEvent(map, infoWindowCarrasco);
+      });
+
+
+      //CORBETACA
       markerCaptainCorbetaca = new google.maps.Marker( {
         position: capitancorbetaca,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Captain Corbetaca'
       })
+      infoWindowCapitanCorbetaca = new google.maps.InfoWindow( {
+        position: capitancorbetaca,
+        content: contentStringCapitanCorbetaca
+      });
+      markerCaptainCorbetaca.addListener('click', function() {
+        clickEvent(map, infoWindowCapitanCorbetaca);
+      });
+      markerCaptainCorbetaca.addListener('dbclick', function() {
+        clickEvent(map, infoWindowCapitanCorbetaca);
+      });
+
+
+      //PRADO
       markerPrado = new google.maps.Marker( {
         position: prado,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Prado'
       })
+      infoWindowPrado = new google.maps.InfoWindow( {
+        position: prado,
+        content: contentStringPrado
+      });
+      markerPrado.addListener('click', function() {
+        clickEvent(map, infoWindowPrado);
+      });
+      markerPrado.addListener('dbclick', function() {
+        clickEvent(map, infoWindowPrado);
+      });
+
+
+      //LAGUNADELSAUCE
       markerLagunadelSauce = new google.maps.Marker( {
         position: lagunadelsauce,
         map: map,
         url: 'view_station.php?station=863150',
         title: 'Laguna del Sauce'
+      })
+      infoWindowLagunadelSauce = new google.maps.InfoWindow( {
+        position: lagunadelsauce,
+        content: contentStringLagunadelSauce
+      });
+      markerLagunadelSauce.addListener('click', function() {
+        clickEvent(map, infoWindowLagunadelSauce);
+      });
+      markerLagunadelSauce.addListener('dbclick', function() {
+        clickEvent(map, infoWindowLagunadelSauce);
       })
 
       
@@ -381,10 +628,7 @@
 
       /**THE FOLLOWING CODE CREATES THE INFOWINDOWS FOR THE MARKERS**/
       //add infoWindows for all markers
-      infoWindowBellaUnion = new google.maps.InfoWindow( {
-        position: bellaunion,
-        content: contentStringBellaUnion
-      });
+
       infoWindowBuenosAires = new google.maps.InfoWindow( {
         position: buenosaires,
         content: contentBuenosAires
@@ -415,9 +659,6 @@
       });
 
       //add mouse click listeners for every marker
-      markerBellaUnion.addListener('click', function() {
-        clickEvent(map, infoWindowBellaUnion);
-      });
       markerBuenosAires.addListener('click', function() {
         clickEvent(map, infoWindowBuenosAires);
       });
@@ -446,9 +687,7 @@
        * to press the 'select station' button
        */
       //add double click listeners for all markers
-      markerBellaUnion.addListener('dbclick', function() {
-        clickEvent(map, infoWindowBellaUnion);
-      });
+
       markerBuenosAires.addListener('dblclick', function() {
         window.location.href = this.url;
       });
