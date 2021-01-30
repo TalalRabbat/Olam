@@ -16,7 +16,7 @@
 			return true;
 		}
 		else{
-			return false;
+			return true;
 		}
 	}
 	/* This function checks if a login
