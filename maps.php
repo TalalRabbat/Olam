@@ -131,8 +131,8 @@
 
     //initialize infoWindow variables
     var activeInfoWindow, infoWindowGeolocation, infoWindowMonteVideo, infoWindowAtlantic, 
-      infoWindowRiosGallegos, infoWindowSouthAtlantic2, infoWindowSouthAtlantic3, 
-      infoWindowSouthAtlantic4, infoWindowSouthAtlantic5, infoWindowSouthAtlantic6;
+      infoWindowRiosGallegos, infoWindowSantiago, infoWindowLima, 
+      infoWindowBogota, infoWindowCaracas, infoWindowSalvador;
 
     //initialize and set repeat strings for contentString variables
     var contentStringOpen    = '<div id="content"><h5>';
@@ -149,19 +149,19 @@
     var contentStringRiosGallegos = contentStringOpen + 'Rios Gallegos' +
                                       contentStringMiddle + '619020' + contentStringEnd;
     //initialize and set contentString South Atlantic station 2
-    var contentStringSouthAtlantic2 = contentStringOpen + 'GRYTVIKEN S.GEORGIA' +
+    var contentStringSantiago = contentStringOpen + 'Santiago' +
                                       contentStringMiddle + '889030' + contentStringEnd;
     //initialize and set contentString South Atlantic station 3
-    var contentStringSouthAtlantic3 = contentStringOpen + 'MOUNT PLEASANT AIRP' +
+    var contentStringLima = contentStringOpen + 'Lima' +
                                       contentStringMiddle + '888890' + contentStringEnd;
     //initialize and set contentString South Atlantic station 4
-    var contentStringSouthAtlantic4 = contentStringOpen + 'STANLEY' +
+    var contentStringBogota = contentStringOpen + 'Bogota' +
                                       contentStringMiddle + '888900' + contentStringEnd;
     //initialize and set contentString South Atlantic station 5
-    var contentStringSouthAtlantic5 = contentStringOpen + 'STANLEY AIRPORT' +
+    var contentStringCaracas = contentStringOpen + 'Caracas' +
                                       contentStringMiddle + '888910' + contentStringEnd;
     //initialize and set contentString South Atlantic station 6
-    var contentStringSouthAtlantic6 = contentStringOpen + 'GOUGH ISLAND' +
+    var contentStringSalvador = contentStringOpen + 'Salvador' +
                                       contentStringMiddle + '689060' + contentStringEnd;
 
     /* This function closes the current infoWindow and opens a new one
@@ -269,29 +269,29 @@
         content: contentStringRiosGallegos
       });
       //add infoWindow for South Atlantic 2 station marker
-      infoWindowSouthAtlantic2 = new google.maps.InfoWindow( {
+      infoWindowSantiago = new google.maps.InfoWindow( {
         position: santiago,
-        content: contentStringSouthAtlantic2
+        content: contentStringSantiago
       });
       //add infoWindow for South Atlantic 3 station marker
-      infoWindowSouthAtlantic3 = new google.maps.InfoWindow( {
+      infoWindowLima = new google.maps.InfoWindow( {
         position: lima,
-        content: contentStringSouthAtlantic3
+        content: contentStringLima
       });
       //add infoWindow for South Atlantic 4 station marker
-      infoWindowSouthAtlantic4 = new google.maps.InfoWindow( {
+      infoWindowBogota = new google.maps.InfoWindow( {
         position: bogota,
-        content: contentStringSouthAtlantic4
+        content: contentStringBogota
       });
       //add infoWindow for South Atlantic 5 station marker
-      infoWindowSouthAtlantic5 = new google.maps.InfoWindow( {
+      infoWindowCaracas = new google.maps.InfoWindow( {
         position: caracas,
-        content: contentStringSouthAtlantic5
+        content: contentStringCaracas
       });
       //add infoWindow for South Atlantic 6 station marker
-      infoWindowSouthAtlantic6 = new google.maps.InfoWindow( {
+      infoWindowSalvador = new google.maps.InfoWindow( {
         position: salvador,
-        content: contentStringSouthAtlantic6
+        content: contentStringSalvador
       });
 
       //add mouse click Listener for Gambia marker
@@ -308,23 +308,23 @@
       });
       //add mouse click Listener for South Atlantic marker 2
       markerSantiago.addListener('click', function() {
-        clickEvent(map, infoWindowSouthAtlantic2);
+        clickEvent(map, infoWindowSantiago);
       });
       //add mouse click Listener for South Atlantic marker 3
       markerLima.addListener('click', function() {
-        clickEvent(map, infoWindowSouthAtlantic3);
+        clickEvent(map, infoWindowLima);
       });
       //add mouse click Listener for South Atlantic marker 4
       markerBogota.addListener('click', function() {
-        clickEvent(map, infoWindowSouthAtlantic4);
+        clickEvent(map, infoWindowBogota);
       });
       //add mouse click Listener for South Atlantic marker 5
       markerCaracas.addListener('click', function() {
-        clickEvent(map, infoWindowSouthAtlantic5);
+        clickEvent(map, infoWindowCaracas);
       });
       //add mouse click Listener for South Atlantic marker 6
       markerSalvador.addListener('click', function() {
-        clickEvent(map, infoWindowSouthAtlantic6);
+        clickEvent(map, infoWindowSalvador);
       });
 
       /* These listeners are made for ease of use.
