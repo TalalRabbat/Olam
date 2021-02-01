@@ -1,37 +1,25 @@
-requirements:
+2. Customer Requirements
+A website resembling the style of the companies main website.
+	A working product that runs on Google Chrome is the main focus. 
+	A working product on other browsers is desired but not mandatory.
+	All web traffic has to be encrypted by HTTPS.
+	A low impact website is preferred, as employees will be using the website in regions with poor internet connections.
 
-2 queries:
-	Temp (C) for all stations South Atlantic Ocean. History 4 weeks
-	
-	Realtime table windspeed (km/h) and direction for all stations in The Gambia and in 1000km radius Atlantic Ocean. History 2 minutes
------------------------------------------------------
-Services:
-	Wind in graph (optional)
+The website has to display two forms of queries/datasets.
+	Precipitation and temperature of all stations in South America.
+		All stations need to be displayed on a map. 
+		Stations on the map are clickable.
+		When clicked, the station will provide all data in a table.
+		If possible, the table may be replaced by a graph. 
+		The data results have to be as real-time as possible.
+		Missing data has to be corrected by a calculated estimate.
+		Data has to be saved and should be viewable up to one week in the past.
+	A top 5 of stations in Uruguay with the highest humidity on a daily average.
+	All data has to be presented in the metric system unless requested otherwise.
+	Datasets have to be downloadable in .xml format.
 
-	Correct faulty data
-	
-	Table data downloadable .xml file
------------------------------------------------------
-Security:
-	1 ID and password login (make one ourselves)
------------------------------------------------------'
-GUI functionality:
-	In-browser
-	
-	Line graph for windspeed (optional, otherwise table)
-
-	Can get graph per individual station
-
-	In English
-
-	Google maps-like (optional)
------------------------------------------------------
-GUI design:
-	Use of company colours & logo (Red: DC292A, Blue: 184893)
-
-	Easily recognisable
-
-	User friendly
------------------------------------------------------
-Username: user
-Password: GAINEXPRAG2020
+Login system has to be capable of handling over 20 accounts.
+	New accounts will be added by back-end developers of Guiliani Inc.
+	Two working accounts will be presented during the demonstration of the product.
+	Accounts do not have to have any form of hierarchy.
+	The login system has the lowest of all priorities.
