@@ -5,7 +5,7 @@
 	session_start();
 	check_login();
 
-	/*Check which weather station is selected, and if the station is valid*/
+	/*Check validity weather station*/
 	$station_id = $_GET['station'];
 	if(check_station($station_id)) {
 		$error_message = false;
@@ -18,7 +18,7 @@
 <html>
 <!--Head of webpage-->
 <head>
-  <link rel="icon" href="./images/giepa.png">
+  <link rel="icon" href="./images/icon.png">
   <!--Opening code for bootstrap-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -82,7 +82,7 @@
     /*set style for header*/
     header{
       height: 150px;  
-      background-color: #DC292A;
+      background-color: #FFFFFF;
       width: 100%;
       padding: 0px;
       margin: 0px;
@@ -90,13 +90,15 @@
     }
     /*set style for footer*/
     footer {
-      height: 70px;
+      height: 30px;
       width: 100%;
-      background-color: #184893;
+      background-color: #333333;
       padding: 0px;
       margin: 0px;
       margin-bottom:0px;
       border: 0px;
+      text-align: center;
+      color: #7D7D7D;
     }
     /*set style for media*/
     @media (min-width: 768px) {
@@ -138,42 +140,42 @@
 <!--Webpage body-->
 <body>
   <!--The navigation bar on the top of the webpage-->
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #DC292A; ">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFFFFF; ">
     <!--GIEPA logo-->
     <a class="navbar-brand" href="home.php">
-      <img src="./images/logo-giepa.png" width="180" height="60" alt="Logo GIEPA" style="background-color:#f5f5f5; padding: 2px; border: 2px solid  #184893; ">
+      <img src="./images/logo.png" width="180" height="60" alt="Logo GIEPA" style="background-color:#f5f5f5; padding: 2px; border: 2px solid  #184893; ">
     </a>
     <!--Links to homepage, stations and logout-->
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav" style="font-size: 20px;">
-        <a class="nav-item nav-link" href="home.php" style="color: #fff;">Home</a>
-        <a class="nav-item nav-link" href="maps.php" style="color: #fff;">Stations</a>
-        <a class="nav-item nav-link" href="help.php" style="color: #fff;">Help</a>
-        <a class="nav-item nav-link" href="logout.php" style="color: #fff;">Log out</a>
+        <a class="nav-item nav-link" href="home.php" style="color: #000;">Home</a>
+        <a class="nav-item nav-link" href="maps.php" style="color: #000;">Stations</a>
+        <a class="nav-item nav-link" href="help.php" style="color: #000;">Help</a>
+        <a class="nav-item nav-link" href="logout.php" style="color: #000;">Log out</a>
       </div>
-	 <div style="position:relative; left:20%; color:#184893; background-color:white; padding: 2px; border: 2px solid  #184893;">
+	  <div style="position:relative; left:20%; color:#184893; background-color:white; padding: 2px; border: 2px solid  #184893;">
 		<?php 
   		echo "<h2 style='text-align: right;'>" . get_station_name($station_id) . "</h2>";
 		?>
-	</div>
+	  </div>
     </div>
   </nav>
   <!--container divider-->
   <div>
-  <div class="container">
-	<?php 
-		if(check_wind_station($station_id) == true){
-			echo '<div style="width:75%; float: right;"><canvas id="canvas" style=""></canvas></div>';
-		}
-		if($error_message) {
-		echo '<div class="alert alert-danger" role="alert" style="margin-top: 30px;">
-  		<b>ERROR: </b>Selected weather station is not available for this application. <a href="home.php" class="alert-link">Go back to the homepage.</a>
-		</div>';
-		}
-    ?>
-  </div>
-		<div id="current_wind_direction" style="color:#184893; font-weight: bold;width:25%; padding-left:2%;"></div>
-		<div id="current_temperature" style="color:#184893; font-weight: bold;width:40%; padding-left:2%;"></div>
+	<div class="container">
+		<?php 
+			if(check_wind_station($station_id) == true){
+				echo '<div style="width:75%; float: right;"><canvas id="canvas" style=""></canvas></div>';
+			}
+			if($error_message) {
+			echo '<div class="alert alert-danger" role="alert" style="margin-top: 30px;">
+			<b>ERROR: </b>Selected weather station is not available for this application. <a href="home.php" class="alert-link">Go back to the homepage.</a>
+			</div>';
+			}
+		?>
+	</div>
+	<div id="current_wind_direction" style="color:#184893; font-weight: bold;width:25%; padding-left:2%;"></div>
+	<div id="current_temperature" style="color:#184893; font-weight: bold;width:40%; padding-left:2%;"></div>
   </div>
   <script>
   var pause_status = false;
@@ -379,7 +381,7 @@
         }  
 	</script>
 	</div>
-  <footer></footer>
+  <footer> <small> &copy; Copyright <?php echo date("Y"); ?> Olam International All Rights Reserved Co. Reg. No. 199504676H </small> </footer>
   <!--Closing scripts for bootstrap-->
   <script source="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" 

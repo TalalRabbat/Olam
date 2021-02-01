@@ -627,8 +627,7 @@
       });
 
       /**THE FOLLOWING CODE CREATES THE INFOWINDOWS FOR THE MARKERS**/
-      //add infoWindows for all markers
-
+      //add infoWindows for all markers      
       infoWindowBuenosAires = new google.maps.InfoWindow( {
         position: buenosaires,
         content: contentBuenosAires
@@ -657,7 +656,6 @@
         position: salvador,
         content: contentStringSalvador
       });
-
       //add mouse click listeners for every marker
       markerBuenosAires.addListener('click', function() {
         clickEvent(map, infoWindowBuenosAires);
@@ -680,14 +678,7 @@
       markerSalvador.addListener('click', function() {
         clickEvent(map, infoWindowSalvador);
       });
-
-      /* These listeners are made for ease of use.
-       * Double clicking a weather station marker takes
-       * you straight to its graph data, instead of having
-       * to press the 'select station' button
-       */
       //add double click listeners for all markers
-
       markerBuenosAires.addListener('dblclick', function() {
         window.location.href = this.url;
       });
@@ -749,7 +740,7 @@
         //browser doesn't support geolocation
         handleLocationError(false, infoWindowGeolocation, map.getCenter());
       }
-      //Gambia infoWindow link to activeInfoWindow
+      //infoWindow link to activeInfoWindow
       activeInfoWindow = infoWindowBellaUnion;
     }
     // This function handles errors for geolocation

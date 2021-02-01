@@ -21,6 +21,7 @@
 			return true;
 		}
 	}
+	
 	/* This function checks if a login
 	 * session is active, if it is not, redirect to login screen
 	 */
@@ -29,6 +30,7 @@
 			header('location: index.php');
 		}
 	}
+
 	/* This function checks if the selected weather station
 	 * is one of the stations used for this project
 	 */
@@ -40,6 +42,7 @@
 			return false;
 		}
 	}
+
 	/* This function checks if the selected weather station
 	 * is one of the stations that needs temperature measurements
 	 */
@@ -51,6 +54,7 @@
 			return false;
 		}
 	}
+
 	/* This function checks if the selected weather station
 	 * is one of the stations that needs wind measurements
 	 */
@@ -62,6 +66,7 @@
 			return false;
 		}
 	}
+
 	/* This function returns the name of a station. It uses the key of
 	 * the $allowed_stations array to search the $station_locations array
 	 */
@@ -72,12 +77,14 @@
 
 		return $name;
 	}
+
 	/* This array will hold the required data for the weather application, 
 	 * in the form of a measurement object
 	 * The key is the stationnumber, the value is an array of the measurement objects belonging to the 
 	 * station, holding this stationnumber.
 	 */
 	$measurements=array();
+
 	/* This class creates a measurement object,
 	 * which holds data of a measuremnt in a weatherstation
 	 */
@@ -88,6 +95,7 @@
 	    public $wdsp;
 	    public $wnddir; 
 	}
+
 	//This functions takes two numbers and adds them together where 1 number will be calculated the remainder
 	function parse_to_float($num,$remainder){
 		if($num<0){
@@ -97,51 +105,42 @@
 		}
 	}
 	
-	
-	
-	
-	
 	/* This function parses an bin file and filters based on the stationnumber
 	 * If the stationnumber belongs to a station that is needed an object will be created 
 	 * The object will be put in the measurements array
 	 */
 	 
-	function parse_bin($bin_file,$name){
+	function parse_bin($bin_file, $name){
 		global $measurements;
 		//if file doesnt exist: clear measurements
-		if(! file_exists($bin_file)){
+		if(!file_exists($bin_file)){
 			$measurements=array();
 			return;
 		}
 		
-		$file=fopen($bin_file, "rb");
-		
-		
-		
-		
-		
+		$file=fopen($bin_file, "rb");		
 		
 		while(!feof($file)){
 			if((ftell($file))==filesize($bin_file)){
 				break;
 			}
-			
-			
+						
 			$year=unpack("s",fread($file,2))[1];
-
 			$month=unpack("c",fread($file,1))[1];
-			$day=unpack("c",fread($file,1))[1];
+			$day=unpack("c",fread($file,1))[1];	
 			$hours=unpack("c",fread($file,1))[1];
 			$minutes=unpack("c",fread($file,1))[1];
 			$seconds=unpack("c",fread($file,1))[1];
+
 			$temperature=unpack("c",fread($file,1))[1];
 			$temperature_remainder=unpack("c",fread($file,1))[1];
 			fread($file,11);
+
 			$wdsp=unpack("c",fread($file,1))[1];
 			$wdsp_remainder=unpack("c",fread($file,1))[1]; 
 			fread($file,7);
-			$wnddir=unpack("s",fread($file,2))[1];
-			
+
+			$wnddir=unpack("s",fread($file,2))[1];	
 			
 			$measurement =new Measurement(); 
             $measurement->stn=intval($name);
@@ -150,14 +149,9 @@
 	        $measurement->wdsp=parse_to_float($wdsp,$wdsp_remainder);
 	        $measurement->wnddir=$wnddir;
 	        $measurements=array_merge($measurements,array($measurement));  
-
-		
-			
-
-			
-			
-			
+				
 		}
+
 		fclose($file);
 	}
 
@@ -190,40 +184,38 @@
 			return "NORTH-WEST";
 		}
 	}
+
 	function createCompass($degrees){
 		$degrees=-1*$degrees;
-	header("Content-type: image/png");
-	$img_width = 701;
-	$img_height = 701;
-	$dest_image = imagecreatetruecolor($img_width, $img_height);
-	$a = imagecreatefrompng("image.png");
-	$b = imagecreatefrompng("arrow.png");
-	$c = imagecreatefrompng("sides.png");
-	$source = $b;
-	$sw = imagesx($source);
-	$sh = imagesy($source);
+		header("Content-type: image/png");
+		$img_width = 701;
+		$img_height = 701;
+		$dest_image = imagecreatetruecolor($img_width, $img_height);
+		$a = imagecreatefrompng("image.png");
+		$b = imagecreatefrompng("arrow.png");
+		$c = imagecreatefrompng("sides.png");
+		$source = $b;
+		$sw = imagesx($source);
+		$sh = imagesy($source);
 
-	$rotate = imagerotate($source, $degrees, 0);
-	$rw = imagesx($rotate);
-	$rh = imagesy($rotate);
-		
-	$croppedarrow = imagecrop($rotate, array(
-		'x' => $rw * (1 - $sw / $rw) * 0.5,
-		'y' => $rh * (1 - $sh / $rh) * 0.5,
-		'width' => $sw,
-		'height'=> $sh
-	));
+		$rotate = imagerotate($source, $degrees, 0);
+		$rw = imagesx($rotate);
+		$rh = imagesy($rotate);
+			
+		$croppedarrow = imagecrop($rotate, array(
+			'x' => $rw * (1 - $sw / $rw) * 0.5,
+			'y' => $rh * (1 - $sh / $rh) * 0.5,
+			'width' => $sw,
+			'height'=> $sh
+		));
 
-	imagecopy($dest_image, $a, 0, 0, 0, 0, $img_width, $img_height);
-	imagecopy($dest_image, $croppedarrow, 0, 0, 0, 0, $img_width, $img_height);
-	imagecopy($dest_image, $c, 0, 0, 0, 0, $img_width, $img_height);
+		imagecopy($dest_image, $a, 0, 0, 0, 0, $img_width, $img_height);
+		imagecopy($dest_image, $croppedarrow, 0, 0, 0, 0, $img_width, $img_height);
+		imagecopy($dest_image, $c, 0, 0, 0, 0, $img_width, $img_height);
 
-	header('Content-Type: image/png');
-	imagepng($dest_image,"compass.png");
+		header('Content-Type: image/png');
+		imagepng($dest_image,"compass.png");
    }
 
-	
-	
-	
 	
 ?>
