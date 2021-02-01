@@ -97,10 +97,6 @@
 		}
 	}
 	
-	
-	
-	
-	
 	/* This function parses an bin file and filters based on the stationnumber
 	 * If the stationnumber belongs to a station that is needed an object will be created 
 	 * The object will be put in the measurements array
@@ -190,40 +186,38 @@
 			return "NORTH-WEST";
 		}
 	}
+
 	function createCompass($degrees){
 		$degrees=-1*$degrees;
-	header("Content-type: image/png");
-	$img_width = 701;
-	$img_height = 701;
-	$dest_image = imagecreatetruecolor($img_width, $img_height);
-	$a = imagecreatefrompng("image.png");
-	$b = imagecreatefrompng("arrow.png");
-	$c = imagecreatefrompng("sides.png");
-	$source = $b;
-	$sw = imagesx($source);
-	$sh = imagesy($source);
+		header("Content-type: image/png");
+		$img_width = 701;
+		$img_height = 701;
+		$dest_image = imagecreatetruecolor($img_width, $img_height);
+		$a = imagecreatefrompng("image.png");
+		$b = imagecreatefrompng("arrow.png");
+		$c = imagecreatefrompng("sides.png");
+		$source = $b;
+		$sw = imagesx($source);
+		$sh = imagesy($source);
 
-	$rotate = imagerotate($source, $degrees, 0);
-	$rw = imagesx($rotate);
-	$rh = imagesy($rotate);
-		
-	$croppedarrow = imagecrop($rotate, array(
-		'x' => $rw * (1 - $sw / $rw) * 0.5,
-		'y' => $rh * (1 - $sh / $rh) * 0.5,
-		'width' => $sw,
-		'height'=> $sh
-	));
+		$rotate = imagerotate($source, $degrees, 0);
+		$rw = imagesx($rotate);
+		$rh = imagesy($rotate);
+			
+		$croppedarrow = imagecrop($rotate, array(
+			'x' => $rw * (1 - $sw / $rw) * 0.5,
+			'y' => $rh * (1 - $sh / $rh) * 0.5,
+			'width' => $sw,
+			'height'=> $sh
+		));
 
-	imagecopy($dest_image, $a, 0, 0, 0, 0, $img_width, $img_height);
-	imagecopy($dest_image, $croppedarrow, 0, 0, 0, 0, $img_width, $img_height);
-	imagecopy($dest_image, $c, 0, 0, 0, 0, $img_width, $img_height);
+		imagecopy($dest_image, $a, 0, 0, 0, 0, $img_width, $img_height);
+		imagecopy($dest_image, $croppedarrow, 0, 0, 0, 0, $img_width, $img_height);
+		imagecopy($dest_image, $c, 0, 0, 0, 0, $img_width, $img_height);
 
-	header('Content-Type: image/png');
-	imagepng($dest_image,"compass.png");
+		header('Content-Type: image/png');
+		imagepng($dest_image,"compass.png");
    }
 
-	
-	
-	
 	
 ?>

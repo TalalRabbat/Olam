@@ -238,7 +238,7 @@
 	  data: {
 	    labels: [],
 	    datasets: [{
-	      label: 'Windspeed in km/h',
+	      label: 'Downfall',
 	      data: [],
 	      fill: false,
 	    }]
@@ -249,7 +249,7 @@
 		responsive: true,
 		title: {
 		  display: true,
-		  text: 'Windspeed in km/h'
+		  text: 'Downfall'
 		},
 		//tooltip options
 	    tooltips: {
@@ -275,7 +275,7 @@
 		  yAxes: [{
 		    scaleLabel: {
 			  display: true,
-			  labelString: 'Windspeed in km/h',
+			  labelString: 'Downfall',
 			}
 	      }]
 		}
@@ -376,12 +376,11 @@
 	  xmlhttp.open("GET", "ajax_parse_dir.php"+getParam, true);
 	  xmlhttp.send();
 	}	
-	
-	
   </script>
-  <script src="jquery.min.1.11.1.js" type="text/javascript"></script>  
+  
+  	<script src="jquery.min.1.11.1.js" type="text/javascript"></script>  
 	<script src="jquery.tabletoxml.js" type="text/javascript"></script>  
-  <script type="text/javascript">  
+  	<script type="text/javascript">  
         function exporttoxml(table) {  
             $(table).tabletoxml({  
                 rootnode: "Data",  
@@ -391,7 +390,7 @@
         }  
 
 	</script>
-	</div>
+  </div>
   <footer> <small> &copy; Copyright <?php echo date("Y"); ?> Olam International All Rights Reserved Co. Reg. No. 199504676H </small> </footer>
 
   <script source="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
