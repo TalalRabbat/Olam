@@ -238,7 +238,7 @@
 				fill: false,
 			}]
 		},
-	  //Graph options
+	  	//Graph options
 		options: {
 			//responsiveness
 			responsive: true,
@@ -279,28 +279,25 @@
 
 	//Load data onto graph
 	window.onload = function() {
-	  var ctx = document.getElementById('canvas').getContext('2d');
-	  window.myLine = new Chart(ctx, config);
+	  	var ctx = document.getElementById('canvas').getContext('2d');
+	  	window.myLine = new Chart(ctx, config);
 	};
 
 	//Add data
 	function addData(chart, label, data) {
-	  chart.data.labels.push(label);
-	  chart.data.datasets.forEach((dataset) => {
-	    dataset.data.push(data);
-	  });
-	  chart.update();
+	  	chart.data.labels.push(label);
+	  	chart.data.datasets.forEach((dataset) => {
+	    	dataset.data.push(data);
+	  	});
+	  	chart.update();
 	}
 
-	//Remove data
-	//After two minutes remove the first value from the data array
+	//Remove first datapoint after two minutes
 	function removeData(chart) {
-      if(Object.keys(window.myLine.data.datasets[0].data).length == 120) {
-      	chart.data.labels.shift();
-	    chart.data.datasets.forEach((dataset) => {
-	        dataset.data.shift();
-	    });
-	    chart.update();
+      	if(Object.keys(window.myLine.data.datasets[0].data).length == 120) {
+			chart.data.labels.shift();
+			chart.data.datasets.forEach((dataset) => { dataset.data.shift();	});
+	    	chart.update();
 		}
 	}
 
@@ -308,23 +305,25 @@
 	function showWnddir(){
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
-	      if (this.readyState == 4 && this.status == 200) 
-          document.getElementById("current_wind_direction").innerHTML = this.responseText;
+	      	if (this.readyState == 4 && this.status == 200) 
+          	document.getElementById("current_wind_direction").innerHTML = this.responseText;
 	    }
-	  xmlhttp.open("GET", "ajax_wind_direction.php"+getParam, true);
-	  xmlhttp.send();
+	  	xmlhttp.open("GET", "ajax_wind_direction.php"+getParam, true);
+	  	xmlhttp.send();
 	}
-		    //function to show temperature
+
+	//function to show temperature
 	function showTemp() {
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
-	      if (this.readyState == 4 && this.status == 200) 
-          addData(window.myLine, '', this.responseText);
+	      	if (this.readyState == 4 && this.status == 200) 
+          	addData(window.myLine, '', this.responseText);
 	    document.getElementById("current_temperature").innerHTML = this.responseText;
-	  }
-	  xmlhttp.open("GET", "ajax_temperature.php"+getParam, true);
-	  xmlhttp.send();
+	  	}
+	  	xmlhttp.open("GET", "ajax_temperature.php"+getParam, true);
+	  	xmlhttp.send();
 	}
+
     //function to show wind speed
 	function showWdsp() {
 	    var xmlhttp = new XMLHttpRequest();
@@ -333,21 +332,21 @@
 	      	var today = new Date();
 			var time = today.getHours() + ":" + today.getMinutes();
           	addData(window.myLine, time, this.responseText);
-	    
-	  }
-	  xmlhttp.open("GET", "ajax_wind_speed.php"+getParam, true);
-	  xmlhttp.send();
+	    }
+	  	xmlhttp.open("GET", "ajax_wind_speed.php"+getParam, true);
+	  	xmlhttp.send();
 	}
-	   //function to show table with weatherdata
+
+	//function to show table with weatherdata
 	function showTable(){
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
-	      if (this.readyState == 4 && this.status == 200) {
+	      	if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("data_table").innerHTML = this.responseText;
-	    }
-	  }
-	  xmlhttp.open("GET", "ajax_table.php"+getParam, true);
-	  xmlhttp.send();
+	    	}
+	  	}
+	  	xmlhttp.open("GET", "ajax_table.php"+getParam, true);
+	  	xmlhttp.send();
 	}
 	function showtempTable(){
 	    var xmlhttp = new XMLHttpRequest();
