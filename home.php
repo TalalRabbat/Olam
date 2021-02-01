@@ -95,41 +95,39 @@
 <body>
 
 <header>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
   	<a class="navbar-brand" href="home.php">
-      <img src="./images/logo.png" width="180" height="60" alt="Logo Olam" style="background-color:#FFFFFF; padding: 2px; ">
+      	<img src="./images/logo.png" width="180" height="60" alt="Logo Olam" style="background-color:#FFFFFF; padding: 2px; ">
     </a>
     <div class="container-fluid">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#navbarExample01"
-        aria-controls="navbarExample01"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarExample01">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" aria-current="page" href="home.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="maps.php">Stations</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="help.php">Help</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="logout.php">Log out</a>
-          </li>
-        </ul>
-  
-      </div>
+		<button
+			class="navbar-toggler"
+			type="button"
+			data-mdb-toggle="collapse"
+			data-mdb-target="#navbarExample01"
+			aria-controls="navbarExample01"
+			aria-expanded="false"
+			aria-label="Toggle navigation"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+      	<div class="collapse navbar-collapse" id="navbarExample01">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item active">
+					<a class="nav-link" aria-current="page" href="home.php">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="maps.php">Stations</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="help.php">Help</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="logout.php">Log out</a>
+				</li>
+			</ul>	
+      	</div>
 
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -137,50 +135,48 @@
     </form>
 
     </div>
-  </nav>
-  <!-- Navbar -->
+</nav>
+<!-- Navbar -->
 
-  <!-- Background image -->
-  <div
+<!-- Background image -->
+<div
     class="p-5 text-center bg-image"
     style="
       background-image: url('./images/banner.jpg');
       height: 400px;
       margin-top: 58px;
       box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);
-    "
-  >
-    <div class="mask">
-      <div class="d-flex justify-content-center align-items-center h-100">
-        <div class="text-white">
-          <h1 class="mb-3">Welcome to the Olam Weather Application!</h1>
-			<!-- 
-		  <h4 class="mb-3"><strong> Write here more informetion about this site.....</strong> </h4>
-			-->		
-		</div>
-      </div>
+	">
+	
+	<div class="mask">
+    	<div class="d-flex justify-content-center align-items-center h-100">
+    		<div class="text-white">
+          		<h1 class="mb-3">Welcome to the Olam Weather Application!</h1>
+				<!-- 
+		  		<h4 class="mb-3"><strong> Write here more informetion about this site.....</strong> </h4>
+				-->		
+			</div>
+      	</div>
     </div>
-  </div>
-  <!-- Background image -->
+</div>  
 </header>
 
 <br/>
 <br/>
-    <!--Code that checks if error message needs to be displayed-->
-    <?php
-	  if($error_message) {
-	  echo '<div class="alert alert-danger" role="alert" style="margin-top: 30px;">
-  		<b>ERROR: </b>Selected weather station is not available for this application. <a href="home.php" class="alert-link">Go back to the homepage.</a>
-		</div>';
-	  }
-    ?>
-	
-
+<!--Code that checks if error message needs to be displayed-->
+<?php
+	if($error_message) {
+	echo '<div class="alert alert-danger" role="alert" style="margin-top: 30px;">
+	<b>ERROR: </b>Selected weather station is not available for this application. <a href="home.php" class="alert-link">Go back to the homepage.</a>
+	</div>';
+	}
+?>
 
 <div class="container">
     <div class="row">
+		<!--
   		<div class="col-sm-4" id="current_wind_direction" style="color:#7D7D7D; font-weight: bold;width:25%;"></div>
-	
+		-->
 		<div class="col-sm-8" style="display:inline-block; width: 100%; color:#7D7D7D;">
 			<a id="data_table"  class="wtable"></a>
 		</div>
@@ -188,94 +184,93 @@
 	<hr class="rounded">
 	<div class="row">
 		<div class="col-sm-12">
-	  	<!--Canvas here-->
+	  		<!--Canvas here-->
 	  		<canvas id="canvas" style=""></canvas>
     	</div>
     </div>
 </div>
 
-  <script>
-  var pause_status = false;
-  //Interval for showtemp function
-  window.setInterval(checkTable, 1000);
-  function checkTable(){
-	  if(pause_status == false){
-		ReadCSV();
-		showTable();
-		showtempTable();
-		showWdsp(); 
-		removeData(window.myLine);
-		showWnddir();
-	  }
-	  else{
-		ReadXML();
-		showWdsp(); 
-		removeData(window.myLine);
-		showWnddir();
-	  }
-  }
-  function pauseTable(){
-	  pause_status = true;
-  }
-  function continueTable(){
-	  pause_status = false;
-  }
-  </script>
+<script>
+	var pause_status = false;
+	//Interval for showtemp function
+	window.setInterval(checkTable, 1000);
+	function checkTable(){
+		if(pause_status == false){
+			ReadCSV();
+			showTable();
+			showtempTable();
+			showWdsp(); 
+			removeData(window.myLine);
+			showWnddir();
+		}
+		else{
+			ReadXML();
+			showWdsp(); 
+			removeData(window.myLine);
+			showWnddir();
+		}
+	}
+	function pauseTable(){
+		pause_status = true;
+	}
+	function continueTable(){
+		pause_status = false;
+	}
+</script>
 
 
 
 
 <script>
-  parser = new DOMParser();
-
+  	parser = new DOMParser();
 
 	var getParam="?station=617010";
 	//set configuration variable
 	var config = {
-	  //Set graph as linegraph
-	  type: 'line',
-	  //Graph data information
-	  data: {
-	    labels: [],
-	    datasets: [{
-	      label: 'Downfall',
-	      data: [],
-	      fill: false,
-	    }]
-	  },
+		//Set graph as linegraph
+		type: 'line',
+		//Graph data information
+		data:{
+			labels: [],
+			datasets: [{
+				label: 'Downfall',
+				data: [],
+				fill: false,
+			}]
+		},
 	  //Graph options
 	  options: {
 	  	//responsive options
 		responsive: true,
 		title: {
-		  display: true,
-		  text: 'Downfall'
+			display: true,
+			text: 'Downfall'
 		},
 		//tooltip options
 	    tooltips: {
-		  mode: 'index',
-		  intersect: false,
+			mode: 'index',
+			intersect: false,
 		},
 		//mouse hover options
 	    hover: {
-		  mode: 'nearest',
-		  intersect: true
+			mode: 'nearest',
+			intersect: true
 		},
 		//scaling options
 	    scales: {
 	      //scaling x-axis
-		  xAxes: [{
-		    display: true,
-			scaleLabel: {
-			  display: true,
-			  labelString: 'Time'
-			}
-		  }],
+			xAxes: [{
+				display: true,
+				scaleLabel: {
+					display: true,
+					labelString: 'Time'
+				}
+			}],
 		  //scaling y-axis
 		  yAxes: [{
 		    scaleLabel: {
-			  display: true,
-			  labelString: 'Downfall',
+				display: true,
+				labelString: 'Downfall',
 			}
 	      }]
 		}
