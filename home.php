@@ -351,24 +351,24 @@
 	function showtempTable(){
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
-	      if (this.readyState == 4 && this.status == 200) {
+	      	if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("date_temp_table").innerHTML = this.responseText;
-	    }
-	  }
-	  xmlhttp.open("GET", "ajax_table_temp.php"+getParam, true);
-	  xmlhttp.send();
+	    	}
+	  	}
+	 	xmlhttp.open("GET", "ajax_table_temp.php"+getParam, true);
+	  	xmlhttp.send();
 	}
 	
 	//This function reads the needed csv files once
 	function ReadCSV(){
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
-	      if (this.readyState == 4 && this.status == 200) {
+	      	if (this.readyState == 4 && this.status == 200) {
 		
-	    }
-	  }
-	  xmlhttp.open("GET", "ajax_parse_dir.php"+getParam, true);
-	  xmlhttp.send();
+	    	}
+	  	}
+	  	xmlhttp.open("GET", "ajax_parse_dir.php"+getParam, true);
+	  	xmlhttp.send();
 	}	
 </script>
   
