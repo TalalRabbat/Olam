@@ -269,7 +269,7 @@
         <p>
           All stations save their data in <b>a table</b> which is visible on the station webpage. <b>You can download this table</b> in by clicking on the <b>Download Table</b> button.
           <hr/>
-          The table does <b>not</b> automatically update, but you <b>can refresh the table</b> by clicking the <b>Refresh Table</b> button.
+          The table does <b>not</b> automatically update, <b>refresh the table</b> by clicking the <b>Refresh Table</b> button.
           <hr />
         </p>
       </div>
