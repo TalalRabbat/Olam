@@ -143,7 +143,7 @@
     
     <form class="form-signin" method="post" action="">
       
-      <h2 class="h3 mb-3 font-weight-normal">Please Log in</h2>
+      <h2 class="h3 mb-3 font-weight-normal">Please log in</h2>
 
       <h6 class="h6 mb-6 font-weight-normal text-danger"><?php echo $error; ?></h6>
 
