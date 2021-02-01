@@ -161,7 +161,7 @@
       <div class="d-flex justify-content-center align-items-center h-100">
         <div class="text-white">
           <h1 class="mb-3">Help</h1>
-          <h5 class="mb-3">This page is meant to help you out with any questions regarding the use of the Olam Weather Application </h5>
+          <h5 class="mb-3">This page provides answers to questions regarding the use of the Olam Weather Application. </h5>
         </div>
       </div>
     </div>
@@ -181,16 +181,16 @@
       <div class="col-sm-6">
       <h4>Homepage</h4>
       <p>
-        This page is the first page you visit after logging-in and containts a brief welcome message. It also shows the weather data of the weather station <b>Name of your whether station</b>.
+        This page is the first page you visit after logging-in and contains a brief welcome message. It also shows the weather data of the weather station <b>Name of your whether station</b>.
         <br />
-        To go back to the homepage, left-click <b>Home</b> on the navigation bar.
+        To go back to the homepage, click <b>Home</b> on the navigation bar.
       </p>
       </div>
       <div class="col-sm-6">
         <figure>
           <a href="home.php"><img src="./images/logo.png" width="50%" alt="Olam Logo"></a>
           <figcaption>
-            You can always left-click on <b>the Olam logo</b> on the navigation bar to go straight to the homepage
+            You can always click on <b>the Olam logo</b> on the navigation bar to go straight to the homepage
           </figcaption>
         </figure>
       </div>
@@ -201,15 +201,15 @@
       <div class="col-sm-6">
         <h4>Map of stations</h4>
         <p>
-          Left-clicking on <b>Stations</b> sends you to the webpage with a map of the world, which contains a <b>total of 9 markers</b>.
+          Clicking on <b>Stations</b> sends you to the webpage with a map of the world, which contains a <b>total of 9 markers</b>.
           <hr />
         </p>
         <p style="padding-top: 5px">
-          <b>Every red marker</b> represents an individual weather station. Only weather stations in The Gambia area + South Atlantic are marked, for a total of 8 red markers. 
+          <b>Every red marker</b> represents an individual weather station.  
         </p>
           <hr />
         <p style="padding-top: 5px">
-          <b>The single blue marker</b> represents the user's current location, also known as your <b>Geolocation</b>.
+          <b>The single blue marker</b> represents your current location, also known as your <b>Geolocation</b>.
         </p>
       </div>
       <div class="col-sm-6">
@@ -227,7 +227,7 @@
       <div class="col-sm-6">
       <h4>Selecting a station</h4>
       <p>
-        Left-clicking a <b>red marker</b> will open up a window on top of the marker that shows the station's name and <b>a button</b> with the text <b>Select this station</b>. Left-click the button to go to that station's measurements.
+        Clicking a <b>red marker</b> opens a window that shows the station's name and a selection menu.
       </p>
       </div>
       <div class="col-sm-6">
@@ -247,16 +247,10 @@
       <div class="col-sm-6">
         <h4>Station information</h4>
         <p>
-          <b>The Gambia stations</b> display the local current windspeed <b>in km/h</b> & wind direction, and are updated <b>every second</b>. 
-          <br />
-          These stations visualise the windspeed <b>via linegraph</b> and the wind-direction <b>via text and compass</b>.
+          <b>The stations</b> display the local Downfall <b>in PLACEHOLDER</b> & temperature, and are updated <b>every second</b>. 
         </p>
         <hr />
-        <p style="padding-top: 5px;">
-          <b>The South Atlantic stations</b> display the local temperature <b>in °C</b>, and are <b>updated daily</b>.
-          <br />
-          These stations visualise the temperature <b>via text</b>.
-        </p>
+        
       </div>
       <div class="col-sm-6">
         <figure>
@@ -273,11 +267,10 @@
       <div class="col-sm-6">
         <h4>Table data</h4>
         <p>
-          All stations save their data in <b>a table</b> and is visible on the station webpage. <b>You can download this table</b> in by left-clicking on the <b>Download Table</b> button.
+          All stations save their data in <b>a table</b> which is visible on the station webpage. <b>You can download this table</b> in by clicking on the <b>Download Table</b> button.
           <hr/>
-          The table does <b>not</b> automatically update, but you <b>can refresh the table</b> by left-clickinh the <b>Refresh Table</b> button.
+          The table does <b>not</b> automatically update, but you <b>can refresh the table</b> by clicking the <b>Refresh Table</b> button.
           <hr />
-          <b>Note:</b> South Atlantic stations display temperature & the Gambia stations windspeed and direction.
         </p>
       </div>
       <div class="col-sm-6">
@@ -297,7 +290,7 @@
         <div class="col-sm-6">
         <h4 style="padding-top: 15px;">Logging out</h4>
         <p>
-          Left-clicking on <b>Log out</b> on the navigation bar will send you back to the login screen. You should <b>ALWAYS</b> log out when you are leaving the computer <b>unsupervised</b>, so that unauthorised people cannot access this application.
+          Clicking on <b>Log out</b> at the navigation bar will send you back to the login screen. You should <b>ALWAYS</b> before closing the application.
         </p>
       </div>
     </div>

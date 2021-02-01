@@ -21,6 +21,7 @@
 			return true;
 		}
 	}
+	
 	/* This function checks if a login
 	 * session is active, if it is not, redirect to login screen
 	 */
@@ -29,6 +30,7 @@
 			header('location: index.php');
 		}
 	}
+
 	/* This function checks if the selected weather station
 	 * is one of the stations used for this project
 	 */
@@ -40,6 +42,7 @@
 			return false;
 		}
 	}
+
 	/* This function checks if the selected weather station
 	 * is one of the stations that needs temperature measurements
 	 */
@@ -51,6 +54,7 @@
 			return false;
 		}
 	}
+
 	/* This function checks if the selected weather station
 	 * is one of the stations that needs wind measurements
 	 */
@@ -62,6 +66,7 @@
 			return false;
 		}
 	}
+
 	/* This function returns the name of a station. It uses the key of
 	 * the $allowed_stations array to search the $station_locations array
 	 */
@@ -72,12 +77,14 @@
 
 		return $name;
 	}
+
 	/* This array will hold the required data for the weather application, 
 	 * in the form of a measurement object
 	 * The key is the stationnumber, the value is an array of the measurement objects belonging to the 
 	 * station, holding this stationnumber.
 	 */
 	$measurements=array();
+
 	/* This class creates a measurement object,
 	 * which holds data of a measuremnt in a weatherstation
 	 */
@@ -88,6 +95,7 @@
 	    public $wdsp;
 	    public $wnddir; 
 	}
+
 	//This functions takes two numbers and adds them together where 1 number will be calculated the remainder
 	function parse_to_float($num,$remainder){
 		if($num<0){
@@ -102,10 +110,10 @@
 	 * The object will be put in the measurements array
 	 */
 	 
-	function parse_bin($bin_file,$name){
+	function parse_bin($bin_file, $name){
 		global $measurements;
 		//if file doesnt exist: clear measurements
-		if(! file_exists($bin_file)){
+		if(!file_exists($bin_file)){
 			$measurements=array();
 			return;
 		}
@@ -116,11 +124,10 @@
 			if((ftell($file))==filesize($bin_file)){
 				break;
 			}
-			
-			
+						
 			$year=unpack("s",fread($file,2))[1];
 			$month=unpack("c",fread($file,1))[1];
-			$day=unpack("c",fread($file,1))[1];
+			$day=unpack("c",fread($file,1))[1];	
 			$hours=unpack("c",fread($file,1))[1];
 			$minutes=unpack("c",fread($file,1))[1];
 			$seconds=unpack("c",fread($file,1))[1];
