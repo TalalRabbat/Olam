@@ -239,42 +239,42 @@
 			}]
 		},
 	  //Graph options
-	  options: {
-	  	//responsive options
-		responsive: true,
-		title: {
-			display: true,
-			text: 'Downfall'
-		},
-		//tooltip options
-	    tooltips: {
-			mode: 'index',
-			intersect: false,
-		},
-		//mouse hover options
-	    hover: {
-			mode: 'nearest',
-			intersect: true
-		},
-		//scaling options
-	    scales: {
-	      //scaling x-axis
-			xAxes: [{
+		options: {
+			//responsiveness
+			responsive: true,
+			title: {
 				display: true,
-				scaleLabel: {
+				text: 'Downfall'
+			},
+			//tooltip
+			tooltips: {
+				mode: 'index',
+				intersect: false,
+			},
+			//mouse hover
+			hover: {
+				mode: 'nearest',
+				intersect: true
+			},
+			//scaling
+	    	scales: {
+	      		//scaling x-axis
+				xAxes: [{
 					display: true,
-					labelString: 'Time'
-				}
-			}],
-		  //scaling y-axis
-		  yAxes: [{
-		    scaleLabel: {
-				display: true,
-				labelString: 'Downfall',
+					scaleLabel: {
+						display: true,
+						labelString: 'Time'
+					}
+				}],
+				//scaling y-axis
+				yAxes: [{
+					scaleLabel: {
+						display: true,
+						labelString: 'Downfall',
+					}
+	      		}]
 			}
-	      }]
-		}
-	  }
+	  	}
 	};
 
 	//Load data onto graph
@@ -371,7 +371,7 @@
 	  xmlhttp.open("GET", "ajax_parse_dir.php"+getParam, true);
 	  xmlhttp.send();
 	}	
-  </script>
+</script>
   
   	<script src="jquery.min.1.11.1.js" type="text/javascript"></script>  
 	<script src="jquery.tabletoxml.js" type="text/javascript"></script>  
