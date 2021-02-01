@@ -279,7 +279,7 @@
           <figcaption>
             To download or refresh the table, click the buttons outlined with blue rectangles
             <br />
-            Note: South Atlantic stations display temperature & the Gambia stations windspeed and direction
+           
           </figcaption>
         </figure>
       </div>
