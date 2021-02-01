@@ -740,7 +740,7 @@
         //browser doesn't support geolocation
         handleLocationError(false, infoWindowGeolocation, map.getCenter());
       }
-      //Gambia infoWindow link to activeInfoWindow
+      //infoWindow link to activeInfoWindow
       activeInfoWindow = infoWindowBellaUnion;
     }
     // This function handles errors for geolocation
