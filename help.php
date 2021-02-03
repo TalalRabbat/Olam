@@ -275,7 +275,7 @@
       </div>
       <div class="col-sm-6">
         <figure>
-          <img src="./images/table.png" alt="Data table" width="50%">
+          <img src="./images/table01.png" alt="Data table" width="50%">
           <figcaption>
             To download or refresh the table, click the buttons outlined with blue rectangles
             <br />
