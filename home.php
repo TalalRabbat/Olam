@@ -301,6 +301,7 @@
 		}
 	}
 
+	/*
 	//function to show wind direction
 	function showWnddir(){
 	    var xmlhttp = new XMLHttpRequest();
@@ -311,6 +312,7 @@
 	  	xmlhttp.open("GET", "ajax_wind_direction.php"+getParam, true);
 	  	xmlhttp.send();
 	}
+	*/
 
 	//function to show temperature
 	function showTemp() {

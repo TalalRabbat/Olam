@@ -195,6 +195,7 @@
 		}
 	}
 
+/*
 	function createCompass($degrees){
 		$degrees=-1*$degrees;
 		header("Content-type: image/png");
@@ -226,6 +227,6 @@
 		header('Content-Type: image/png');
 		imagepng($dest_image,"compass.png");
    }
-
+*/
 	
 ?>
