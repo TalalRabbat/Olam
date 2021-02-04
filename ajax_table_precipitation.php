@@ -5,9 +5,9 @@
 	$stationdata=$_SESSION["measurements"];
 	$station_id=$_GET['station'];
 	$output = "";
-	if(check_prcp_station($station_id) == true){
+	if(check_temp_station($station_id) == true){
 		//output the latest dataset of the full data
-		$output .= "<h3>Daily precipitation measurements</h3><table style='width:80%;' id='precipitation_table' border='1px'><thead><th>Date and Time</th><th>Precipitation</th></thead>";
+		$output .= "<h3>Daily precipitation measurements</h3><table style='width:80%;' id='precipitation_table' border='1px'><thead><th>Date and Time</th><th>Temperature</th></thead>";
 		$output .= '<tbody onscroll="pauseTable()">';
 		$row = "";
 		$array = array();
@@ -20,9 +20,9 @@
 				if(array_key_exists($checkdate, $array) == true){
 				}
 				else{
-					$prcp = $stationdata[$measurementIndex]->prcp;
-					$array[$checkdate] = $prcp;
-					$row = "<tr><td>" . $time . "</td><td>" . $prcp . "&#8451;</td></tr>" . $row;
+					$temp = $stationdata[$measurementIndex]->temp;
+					$array[$checkdate] = $temp;
+					$row = "<tr><td>" . $time . "</td><td>" . $temp . "&#8451;</td></tr>" . $row;
 				}	
 			}
 		}
@@ -30,7 +30,7 @@
 			$output .= "<tr><td> No Data </td><td> No Data </td></tr>";
 		}
 		$output .= $row . "</tbody></table>";
-		$output .= '<p style="width: 80%;"><button onclick="exporttoxml(\'#prcp_table\')" style="width: 50%;">Download Table</button><button onclick="continueTable()" style="width: 50%;">Refresh Table</button></p>';
+		$output .= '<p style="width: 80%;"><button onclick="exporttoxml(\'#temp_table\')" style="width: 50%;">Download Table</button><button onclick="continueTable()" style="width: 50%;">Refresh Table</button></p>';
 	}
 	echo $output;
 ?>
