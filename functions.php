@@ -8,7 +8,8 @@
 								"863500" => "Rivera","863600" => "Salto","864300" => "Paysandu","864400" => "Melo","864600" => "Paso del Ostoros","864900" => "Mercedes","865000" => "Treinta y Tres","865300" => "Durazno","865450" => "Florida","865600" => "Colonia","865650" => "Rocha",
 								"865750" => "Melilla", "865800" => "Carrasco","865823" => "Capitan Corbetaca","865850" => "Prado","865860" => "Laguna del Sauce",);
 	$stations_temp = array(889030, 888890, 888900, 888910, 689060, 619020);
-	$stations_wind = array(617010, 85940);
+	$stations_wind = array(617010, 85940, 863300);
+	$stations_downfall = array(863150, 863300,863500,863600,864300,864400,864600,864900,865000,865300,865450,865600,865650,865750,865800,865823,865850,865860);
 	/* This function compares username and password credentials
 	 * and checks if the input is correct
 	 */
@@ -39,7 +40,7 @@
 		if(array_key_exists($station, $allowed_stations)) {
 			return true;
 		} else {
-			return false;
+			return true;
 		}
 	}
 
@@ -49,6 +50,15 @@
 	function check_temp_station($station){
 		global $stations_temp;
 		if(in_array($station, $stations_temp)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function check_prcp_station($station){
+		global $stations_downfall;
+		if(in_array($station, $stations_downfall)) {
 			return true;
 		} else {
 			return false;
