@@ -35,23 +35,18 @@
   	.mask{
   		margin-top: 100px;
   	}
-
-  	table{
-   
+  	table{   
 	border-spacing: 0;
 	border-collapse:collapse;
 	text-align: center;
 	color: #7D7D7D;
-	}
-	
-	tbody, thead tr { display: block; }
-	
+	}	
+	tbody, thead tr { display: block; }	
 	tbody {
     height: 300px;
     overflow-y: auto;
     overflow-x: hidden;
 	}
-
 	th{
     border:0px solid black;
 	width: 10%;
@@ -70,14 +65,11 @@
 	margin-right: auto;
 	width: 100%;
 	}
-
 	/* Rounded border */
 	hr.rounded {
   		border-top: 8px solid #bbb;
  	 	border-radius: 5px;
 	}
-
-
 	footer {
       height: 30px;
       width: 100%;

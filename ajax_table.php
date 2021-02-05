@@ -5,7 +5,7 @@
 	$stationdata=$_SESSION["measurements"];
 	$station_id=$_GET['station'];
 	$output = "";
-	if(check_wind_station($station_id) == true){
+	if(check_precipitation_station($station_id) == true){
 		//output the latest dataset of the full data
 		$output .= "<h3 style='color:#7D7D7D;'>Temp and Downfall</h3><br/><table id='prcp_table' style='width:100%;' border='1px'><thead><th>Date and Time</th><th>   Downfall</th><th>Temp</th></thead>";
 		$output .= '<tbody onscroll="pauseTable()">';

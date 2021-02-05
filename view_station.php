@@ -318,7 +318,7 @@
           	addData(window.myLine, time, this.responseText);
 	    
 	  }
-	  xmlhttp.open("GET", "ajax_precipitation.php"+getParam, true);
+	  xmlhttp.open("GET", "ajax_wind_speed.php"+getParam, true);
 	  xmlhttp.send();
 	}
 	   //function to show table with weatherdata
