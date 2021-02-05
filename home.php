@@ -35,18 +35,23 @@
   	.mask{
   		margin-top: 100px;
   	}
-  	table{   
+
+  	table{
+   
 	border-spacing: 0;
 	border-collapse:collapse;
 	text-align: center;
 	color: #7D7D7D;
-	}	
-	tbody, thead tr { display: block; }	
+	}
+	
+	tbody, thead tr { display: block; }
+	
 	tbody {
     height: 300px;
     overflow-y: auto;
     overflow-x: hidden;
 	}
+
 	th{
     border:0px solid black;
 	width: 10%;
@@ -65,11 +70,14 @@
 	margin-right: auto;
 	width: 100%;
 	}
+
 	/* Rounded border */
 	hr.rounded {
   		border-top: 8px solid #bbb;
  	 	border-radius: 5px;
 	}
+
+
 	footer {
       height: 30px;
       width: 100%;
@@ -166,6 +174,9 @@
 
 <div class="container">
     <div class="row">
+		<!--
+  		<div class="col-sm-4" id="current_wind_direction" style="color:#7D7D7D; font-weight: bold;width:25%;"></div>
+		-->
 		<div class="col-sm-8" style="display:inline-block; width: 100%; color:#7D7D7D;">
 			<a id="data_table"  class="wtable"></a>
 		</div>
@@ -190,11 +201,13 @@
 			showtempTable();
 			showWdsp(); 
 			removeData(window.myLine);
-			}
+			showWnddir();
+		}
 		else{
 			ReadXML();
 			showWdsp(); 
 			removeData(window.myLine);
+			showWnddir();
 		}
 	}
 	function pauseTable(){
@@ -269,6 +282,7 @@
 	  	var ctx = document.getElementById('canvas').getContext('2d');
 	  	window.myLine = new Chart(ctx, config);
 	};
+
 	//Add data
 	function addData(chart, label, data) {
 	  	chart.data.labels.push(label);
@@ -277,6 +291,7 @@
 	  	});
 	  	chart.update();
 	}
+
 	//Remove first datapoint after two minutes
 	function removeData(chart) {
       	if(Object.keys(window.myLine.data.datasets[0].data).length == 120) {
@@ -286,11 +301,20 @@
 		}
 	}
 
+	/*
+	//function to show wind direction
+	function showWnddir(){
+	    var xmlhttp = new XMLHttpRequest();
+	    xmlhttp.onreadystatechange = function() {
+	      	if (this.readyState == 4 && this.status == 200) 
+          	document.getElementById("current_wind_direction").innerHTML = this.responseText;
+	    }
+	  	xmlhttp.open("GET", "ajax_wind_direction.php"+getParam, true);
+	  	xmlhttp.send();
+	}
+	*/
 
-
-	////
-	//functions
-	////
+	//function to show temperature
 	function showTemp() {
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
@@ -301,6 +325,8 @@
 	  	xmlhttp.open("GET", "ajax_temperature.php"+getParam, true);
 	  	xmlhttp.send();
 	}
+
+    //function to show wind speed
 	function showWdsp() {
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
@@ -309,13 +335,11 @@
 			var time = today.getHours() + ":" + today.getMinutes();
           	addData(window.myLine, time, this.responseText);
 	    }
-	  	xmlhttp.open("GET", "ajax_precipitation.php"+getParam, true);
+	  	xmlhttp.open("GET", "ajax_wind_speed.php"+getParam, true);
 	  	xmlhttp.send();
 	}
 
-	////
 	//function to show table with weatherdata
-	////
 	function showTable(){
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
@@ -337,9 +361,7 @@
 	  	xmlhttp.send();
 	}
 	
-	///////////////////////////////////////////////
 	//This function reads the needed csv files once
-	///////////////////////////////////////////////
 	function ReadCSV(){
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
