@@ -150,7 +150,7 @@
 			$wdsp_remainder=unpack("c",fread($file,1))[1]; 
 			fread($file,7);			
 			
-			$prcp=unpack("s",fread($file,2))[1];	
+			$prcp=unpack("c",fread($file,2))[1];	
 			
 			$measurement =new Measurement(); 
             $measurement->stn=intval($name);

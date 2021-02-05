@@ -11,7 +11,7 @@
 		$output .= '<tbody onscroll="pauseTable()">';
 		$row = "";
 		for($measurementIndex = 0; $measurementIndex < sizeof($stationdata); $measurementIndex++){
-			$precipitation = $stationdata[$measurementIndex]->wdsp;
+			$precipitation = $stationdata[$measurementIndex]->prcp;
 			$temp = $stationdata[$measurementIndex]->temp;
 			$time = $stationdata[$measurementIndex]->date_and_time;
 			$time = $time->format('d/m/Y H:i:s');

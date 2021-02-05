@@ -288,9 +288,9 @@
 
 
 
-	////
+	///////////////////////////////////////////////
 	//functions
-	////
+	///////////////////////////////////////////////
 	function showTemp() {
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
@@ -299,6 +299,16 @@
 	    document.getElementById("current_temperature").innerHTML = this.responseText;
 	  	}
 	  	xmlhttp.open("GET", "ajax_temperature.php"+getParam, true);
+	  	xmlhttp.send();
+	}
+	function showPrcp() {
+	    var xmlhttp = new XMLHttpRequest();
+	    xmlhttp.onreadystatechange = function() {
+	      	if (this.readyState == 4 && this.status == 200) 
+          	addData(window.myLine, '', this.responseText);
+	    document.getElementById("current_precipitation").innerHTML = this.responseText;
+	  	}
+	  	xmlhttp.open("GET", "ajax_precipitation.php"+getParam, true);
 	  	xmlhttp.send();
 	}
 	function showWdsp() {
@@ -313,9 +323,10 @@
 	  	xmlhttp.send();
 	}
 
-	////
+
+	///////////////////////////////////////////////
 	//function to show table with weatherdata
-	////
+	///////////////////////////////////////////////
 	function showTable(){
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
@@ -336,6 +347,7 @@
 	 	xmlhttp.open("GET", "ajax_table_temp.php"+getParam, true);
 	  	xmlhttp.send();
 	}
+
 	
 	///////////////////////////////////////////////
 	//This function reads the needed csv files once
