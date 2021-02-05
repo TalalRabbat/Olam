@@ -174,7 +174,7 @@
 			}
 		?>
 	</div>
-	<div id="current_wind_direction" style="color:#184893; font-weight: bold;width:25%; padding-left:2%;"></div>
+	<div id="current_temperature" style="color:#184893; font-weight: bold;width:25%; padding-left:2%;"></div>
 	<div id="current_temperature" style="color:#184893; font-weight: bold;width:40%; padding-left:2%;"></div>
   </div>
   <script>
