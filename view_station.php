@@ -4,9 +4,8 @@
 	/*This code checks if the user is logged in*/
 	session_start();
 	check_login();
+	$station_id=863300;
 
-	/*Check validity weather station*/
-	$station_id = $_GET['station'];
 	if(check_station($station_id)) {
 		$error_message = false;
 	} else {
@@ -141,9 +140,9 @@
 <body>
   <!--The navigation bar on the top of the webpage-->
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFFFFF; ">
-    <!--GIEPA logo-->
+    <!--logo-->
     <a class="navbar-brand" href="home.php">
-      <img src="./images/logo.png" width="180" height="60" alt="Logo GIEPA" style="background-color:#f5f5f5; padding: 2px; border: 2px solid  #184893; ">
+      <img src="./images/logo.png" width="180" height="60" alt="Logo" style="background-color:#f5f5f5; padding: 2px; border: 2px solid  #184893; ">
     </a>
     <!--Links to homepage, stations and logout-->
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -164,7 +163,7 @@
   <div>
 	<div class="container">
 		<?php 
-			if(check_wind_station($station_id) == true){
+			if(check_precipitation_station($station_id) == true){
 				echo '<div style="width:75%; float: right;"><canvas id="canvas" style=""></canvas></div>';
 			}
 			if($error_message) {
@@ -174,203 +173,189 @@
 			}
 		?>
 	</div>
-	<div id="current_temperature" style="color:#184893; font-weight: bold;width:25%; padding-left:2%;"></div>
+	<div id="current_precipitation" style="color:#184893; font-weight: bold;width:25%; padding-left:2%;"></div>
 	<div id="current_temperature" style="color:#184893; font-weight: bold;width:40%; padding-left:2%;"></div>
   </div>
   <script>
-  var pause_status = false;
-  //Interval for showtemp function
-  window.setInterval(checkTable, 1000);
-  function checkTable(){
-	  if(pause_status == false){
-		ReadBin();
-		showTable();
-		showtempTable();
-		showWdsp(); 
-		showTemp();
-		removeData(window.myLine);
-		showWnddir();
-	  }
-	  else{
-		ReadBin();
-		showTemp();
-		showWdsp(); 
-		removeData(window.myLine);
-		showWnddir();
-	  }
-  }
-  function pauseTable(){
-	  pause_status = true;
-  }
-  function continueTable(){
-	  pause_status = false;
-  }
-  </script>
-  <div id="content">
-	<br/>
-	<br/>
-	<div style="width: 49%;">
-	<a id="data_table"  class="wtable"></a>
+	var pause_status = false;
+	//Interval for showtemp function
+	window.setInterval(checkTable, 1000);
+	function checkTable(){
+		if(pause_status == false){
+			ReadCSV();
+			showTable();
+			showtempTable();
+			showPrcp(); 
+			removeData(window.myLine);
+			}
+		else{
+			ReadXML();
+			showPrcp(); 
+			removeData(window.myLine);
+		}
+	}
+	function pauseTable(){
+		pause_status = true;
+	}
+	function continueTable(){
+		pause_status = false;
+	}
+</script>
+  	<div id="content">
+		<br/>
+		<br/>
+		<div style="width: 49%;">
+		<a id="data_table"  class="wtable"></a>
 	</div>
-	<div style="width: 49%;">
-	<a id="date_temp_table"  class="wtable"></a>
-	</div>
+	<!-- <div style="width: 49%;">
+		<a id="date_temp_table"  class="wtable"></a>
+	</div> -->
 </div>
-  <script>
-  parser = new DOMParser();
+<script>
+  	parser = new DOMParser();
 
-
-	var getParam=window.location.search;
+	var getParam="?station=863300";
 	//set configuration variable
 	var config = {
-	  //Set graph as linegraph
-	  type: 'line',
-	  //Graph data information
-	  data: {
-	    labels: [],
-	    datasets: [{
-	      label: 'Windspeed in km/h',
-	      data: [],
-	      fill: false,
-	    }]
-	  },
-	  //Graph options
-	  options: {
-	  	//responsive options
-		responsive: true,
-		title: {
-		  display: true,
-		  text: 'Windspeed in km/h'
+		//Set graph as linegraph
+		type: 'line',
+		//Graph data information
+		data:{
+			labels: [],
+			datasets: [{
+				label: 'Downfall',
+				data: [],
+				fill: false,
+			}]
 		},
-		//tooltip options
-	    tooltips: {
-		  mode: 'index',
-		  intersect: false,
-		},
-		//mouse hover options
-	    hover: {
-		  mode: 'nearest',
-		  intersect: true
-		},
-		//scaling options
-	    scales: {
-	      //scaling x-axis
-		  xAxes: [{
-		    display: true,
-			scaleLabel: {
-			  display: true,
-			  labelString: 'Time'
+	  	//Graph options
+		options: {
+			//responsiveness
+			responsive: true,
+			title: {
+				display: true,
+				text: 'Downfall'
+			},
+			//tooltip
+			tooltips: {
+				mode: 'index',
+				intersect: false,
+			},
+			//mouse hover
+			hover: {
+				mode: 'nearest',
+				intersect: true
+			},
+			//scaling
+	    	scales: {
+	      		//scaling x-axis
+				xAxes: [{
+					display: true,
+					scaleLabel: {
+						display: true,
+						labelString: 'Time'
+					}
+				}],
+				//scaling y-axis
+				yAxes: [{
+					scaleLabel: {
+						display: true,
+						labelString: 'Downfall',
+					}
+	      		}]
 			}
-		  }],
-		  //scaling y-axis
-		  yAxes: [{
-		    scaleLabel: {
-			  display: true,
-			  labelString: 'Windspeed in km/h',
-			}
-	      }]
-		}
-	  }
+	  	}
 	};
 
 	//Load data onto graph
 	window.onload = function() {
-	  var ctx = document.getElementById('canvas').getContext('2d');
-	  window.myLine = new Chart(ctx, config);
+	  	var ctx = document.getElementById('canvas').getContext('2d');
+	  	window.myLine = new Chart(ctx, config);
 	};
-
 	//Add data
 	function addData(chart, label, data) {
-	  chart.data.labels.push(label);
-	  chart.data.datasets.forEach((dataset) => {
-	    dataset.data.push(data);
-	  });
-	  chart.update();
+	  	chart.data.labels.push(label);
+	  	chart.data.datasets.forEach((dataset) => {
+	    	dataset.data.push(data);
+	  	});
+	  	chart.update();
 	}
-
-	//Remove data
-	//After two minutes remove the first value from the data array
+	//Remove first datapoint after two minutes
 	function removeData(chart) {
-      if(Object.keys(window.myLine.data.datasets[0].data).length == 120) {
-      	chart.data.labels.shift();
-	    chart.data.datasets.forEach((dataset) => {
-	        dataset.data.shift();
-	    });
-	    chart.update();
+      	if(Object.keys(window.myLine.data.datasets[0].data).length == 120) {
+			chart.data.labels.shift();
+			chart.data.datasets.forEach((dataset) => { dataset.data.shift();	});
+	    	chart.update();
 		}
 	}
 
-	/*
-	//function to show wind direction
-	function showWnddir(){
+
+
+	///////////////////////////////////////////////
+	//functions
+	///////////////////////////////////////////////
+	function showTemp() {
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
-	      if (this.readyState == 4 && this.status == 200) 
-          document.getElementById("current_precipitation").innerHTML = this.responseText;
-	    }
-	  xmlhttp.open("GET", "ajax_wind_direction.php"+getParam, true);
-	  xmlhttp.send();
+	      	if (this.readyState == 4 && this.status == 200) 
+          	addData(window.myLine, '', this.responseText);
+	    document.getElementById("current_temperature").innerHTML = this.responseText;
+	  	}
+	  	xmlhttp.open("GET", "ajax_temperature.php"+getParam, true);
+	  	xmlhttp.send();
 	}
-	*/
-	//function to show temperature
-	function showTemp(){
+	function showPrcp() {
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
-	      if (this.readyState == 4 && this.status == 200) 
-          document.getElementById("current_temperature").innerHTML = this.responseText;
-	    }
-	  xmlhttp.open("GET", "ajax_temperature.php"+getParam, true);
-	  xmlhttp.send();
+	      	if (this.readyState == 4 && this.status == 200) 
+          	addData(window.myLine, '', this.responseText);
+	    document.getElementById("current_precipitation").innerHTML = this.responseText;
+	  	}
+	  	xmlhttp.open("GET", "ajax_precipitation.php"+getParam, true);
+	  	xmlhttp.send();
 	}
-    //function to show wind speed
-	function showWdsp() {
-	    var xmlhttp = new XMLHttpRequest();
-	    xmlhttp.onreadystatechange = function() {
-	      if (this.readyState == 4 && this.status == 200) 
-	      	var today = new Date();
-			var time = today.getHours() + ":" + today.getMinutes();
-          	addData(window.myLine, time, this.responseText);
-	    
-	  }
-	  xmlhttp.open("GET", "ajax_wind_speed.php"+getParam, true);
-	  xmlhttp.send();
-	}
-	   //function to show table with weatherdata
+	
+
+
+	///////////////////////////////////////////////
+	//function to show table with weatherdata
+	///////////////////////////////////////////////
 	function showTable(){
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
-	      if (this.readyState == 4 && this.status == 200) {
+	      	if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("data_table").innerHTML = this.responseText;
-	    }
-	  }
-	  xmlhttp.open("GET", "ajax_table.php"+getParam, true);
-	  xmlhttp.send();
+	    	}
+	  	}
+	  	xmlhttp.open("GET", "ajax_table.php"+getParam, true);
+	  	xmlhttp.send();
 	}
 	function showtempTable(){
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
-	      if (this.readyState == 4 && this.status == 200) {
+	      	if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("date_temp_table").innerHTML = this.responseText;
-	    }
-	  }
-	  xmlhttp.open("GET", "ajax_table_temp.php"+getParam, true);
-	  xmlhttp.send();
+	    	}
+	  	}
+	 	xmlhttp.open("GET", "ajax_table_temp.php"+getParam, true);
+	  	xmlhttp.send();
 	}
+
 	
+	///////////////////////////////////////////////
 	//This function reads the needed csv files once
-	function ReadBin(){
+	///////////////////////////////////////////////
+	function ReadCSV(){
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
-	      if (this.readyState == 4 && this.status == 200) {
+	      	if (this.readyState == 4 && this.status == 200) {
 		
-	    }
-	  }
-	  xmlhttp.open("GET", "ajax_parse_dir.php"+getParam, true);
-	  xmlhttp.send();
+	    	}
+	  	}
+	  	xmlhttp.open("GET", "ajax_parse_dir.php"+getParam, true);
+	  	xmlhttp.send();
 	}	
-	
-	
-  </script>
+</script>
   <script src="jquery.min.1.11.1.js" type="text/javascript"></script>  
 	<script src="jquery.tabletoxml.js" type="text/javascript"></script>  
   <script type="text/javascript">  

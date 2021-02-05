@@ -35,23 +35,18 @@
   	.mask{
   		margin-top: 100px;
   	}
-
-  	table{
-   
+  	table{   
 	border-spacing: 0;
 	border-collapse:collapse;
 	text-align: center;
 	color: #7D7D7D;
-	}
-	
-	tbody, thead tr { display: block; }
-	
+	}	
+	tbody, thead tr { display: block; }	
 	tbody {
     height: 300px;
     overflow-y: auto;
     overflow-x: hidden;
 	}
-
 	th{
     border:0px solid black;
 	width: 10%;
@@ -70,14 +65,11 @@
 	margin-right: auto;
 	width: 100%;
 	}
-
 	/* Rounded border */
 	hr.rounded {
   		border-top: 8px solid #bbb;
  	 	border-radius: 5px;
 	}
-
-
 	footer {
       height: 30px;
       width: 100%;
@@ -153,7 +145,7 @@
     		<div class="text-white">
           		<h1 class="mb-3">Welcome to the Olam Weather Application!</h1>
 				<!-- 
-		  		<h4 class="mb-3"><strong> Write here more information about this site.....</strong> </h4>
+		  		<h4 class="mb-3"><strong> Write here more informetion about this site.....</strong> </h4>
 				-->		
 			</div>
       	</div>
@@ -174,9 +166,6 @@
 
 <div class="container">
     <div class="row">
-		<!--
-  		<div class="col-sm-4" id="current_wind_direction" style="color:#7D7D7D; font-weight: bold;width:25%;"></div>
-		-->
 		<div class="col-sm-8" style="display:inline-block; width: 100%; color:#7D7D7D;">
 			<a id="data_table"  class="wtable"></a>
 		</div>
@@ -199,15 +188,13 @@
 			ReadCSV();
 			showTable();
 			showtempTable();
-			showWdsp(); 
+			showPrcp(); 
 			removeData(window.myLine);
-			showWnddir();
-		}
+			}
 		else{
 			ReadXML();
-			showWdsp(); 
+			showPrcp(); 
 			removeData(window.myLine);
-			showWnddir();
 		}
 	}
 	function pauseTable(){
@@ -282,7 +269,6 @@
 	  	var ctx = document.getElementById('canvas').getContext('2d');
 	  	window.myLine = new Chart(ctx, config);
 	};
-
 	//Add data
 	function addData(chart, label, data) {
 	  	chart.data.labels.push(label);
@@ -291,7 +277,6 @@
 	  	});
 	  	chart.update();
 	}
-
 	//Remove first datapoint after two minutes
 	function removeData(chart) {
       	if(Object.keys(window.myLine.data.datasets[0].data).length == 120) {
@@ -301,20 +286,11 @@
 		}
 	}
 
-	/*
-	//function to show wind direction
-	function showWnddir(){
-	    var xmlhttp = new XMLHttpRequest();
-	    xmlhttp.onreadystatechange = function() {
-	      	if (this.readyState == 4 && this.status == 200) 
-          	document.getElementById("current_wind_direction").innerHTML = this.responseText;
-	    }
-	  	xmlhttp.open("GET", "ajax_wind_direction.php"+getParam, true);
-	  	xmlhttp.send();
-	}
-	*/
 
-	//function to show temperature
+
+	///////////////////////////////////////////////
+	//functions
+	///////////////////////////////////////////////
 	function showTemp() {
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
@@ -325,21 +301,22 @@
 	  	xmlhttp.open("GET", "ajax_temperature.php"+getParam, true);
 	  	xmlhttp.send();
 	}
-
-    //function to show wind speed
-	function showWdsp() {
+	function showPrcp() {
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
-	      if (this.readyState == 4 && this.status == 200) 
-	      	var today = new Date();
-			var time = today.getHours() + ":" + today.getMinutes();
-          	addData(window.myLine, time, this.responseText);
-	    }
-	  	xmlhttp.open("GET", "ajax_wind_speed.php"+getParam, true);
+	      	if (this.readyState == 4 && this.status == 200) 
+          	addData(window.myLine, '', this.responseText);
+	    document.getElementById("current_precipitation").innerHTML = this.responseText;
+	  	}
+	  	xmlhttp.open("GET", "ajax_precipitation.php"+getParam, true);
 	  	xmlhttp.send();
 	}
+	
 
+
+	///////////////////////////////////////////////
 	//function to show table with weatherdata
+	///////////////////////////////////////////////
 	function showTable(){
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
@@ -360,47 +337,50 @@
 	 	xmlhttp.open("GET", "ajax_table_temp.php"+getParam, true);
 	  	xmlhttp.send();
 	}
+
 	
+	///////////////////////////////////////////////
 	//This function reads the needed csv files once
+	///////////////////////////////////////////////
 	function ReadCSV(){
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
 	      	if (this.readyState == 4 && this.status == 200) {
 		
-	    }
-	  }
-	  xmlhttp.open("GET", "ajax_parse_dir.php"+getParam, true);
-	  xmlhttp.send();
+	    	}
+	  	}
+	  	xmlhttp.open("GET", "ajax_parse_dir.php"+getParam, true);
+	  	xmlhttp.send();
 	}	
 </script>
   
-  	<script src="jquery.min.1.11.1.js" type="text/javascript"></script>  
-	<script src="jquery.tabletoxml.js" type="text/javascript"></script>  
-  	<script type="text/javascript">  
-        function exporttoxml(table) {  
-            $(table).tabletoxml({  
-                rootnode: "Data",  
-                childnode: "Measurement",  
-                filename: "<?php echo get_station_name($station_id); ?>" + table.substr(1)				
-            });  
-        }  
+<script src="jquery.min.1.11.1.js" type="text/javascript"></script>  
+<script src="jquery.tabletoxml.js" type="text/javascript"></script>  
+<script type="text/javascript">  
+    function exporttoxml(table) {  
+		$(table).tabletoxml({  
+			rootnode: "Data",  
+			childnode: "Measurement",  
+			filename: "<?php echo get_station_name($station_id); ?>" + table.substr(1)				
+		});  
+	}  
 
+</script>
+</div>
+	<footer> <small> &copy; Copyright <?php echo date("Y"); ?> Olam International All Rights Reserved Co. Reg. No. 199504676H </small> </footer>
+
+	<script source="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" 
+		crossorigin="anonymous">
 	</script>
-  </div>
-  <footer> <small> &copy; Copyright <?php echo date("Y"); ?> Olam International All Rights Reserved Co. Reg. No. 199504676H </small> </footer>
-
-  <script source="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" 
-    crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" 
-    crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" 
-    crossorigin="anonymous">
-  </script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" 
+		crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" 
+		crossorigin="anonymous">
+	</script>
 
 </body>
 

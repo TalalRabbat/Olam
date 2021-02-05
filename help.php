@@ -254,9 +254,9 @@
       </div>
       <div class="col-sm-6">
         <figure>
-          <img src="./images/measurements.png" alt="Three measurement visualisations" width="63%">
+          
           <figcaption>
-            left: wind direction | top-right: windspeed | bottom-right: temperature.
+            temperature.
           </figcaption>
         </figure>
       </div>
