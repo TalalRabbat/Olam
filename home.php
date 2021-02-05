@@ -174,9 +174,6 @@
 
 <div class="container">
     <div class="row">
-		<!--
-  		<div class="col-sm-4" id="current_wind_direction" style="color:#7D7D7D; font-weight: bold;width:25%;"></div>
-		-->
 		<div class="col-sm-8" style="display:inline-block; width: 100%; color:#7D7D7D;">
 			<a id="data_table"  class="wtable"></a>
 		</div>
@@ -201,13 +198,11 @@
 			showtempTable();
 			showWdsp(); 
 			removeData(window.myLine);
-			showWnddir();
-		}
+			}
 		else{
 			ReadXML();
 			showWdsp(); 
 			removeData(window.myLine);
-			showWnddir();
 		}
 	}
 	function pauseTable(){
@@ -301,17 +296,6 @@
 		}
 	}
 
-	//function to show wind direction
-	function showWnddir(){
-	    var xmlhttp = new XMLHttpRequest();
-	    xmlhttp.onreadystatechange = function() {
-	      	if (this.readyState == 4 && this.status == 200) 
-          	document.getElementById("current_wind_direction").innerHTML = this.responseText;
-	    }
-	  	xmlhttp.open("GET", "ajax_wind_direction.php"+getParam, true);
-	  	xmlhttp.send();
-	}
-
 	//function to show temperature
 	function showTemp() {
 	    var xmlhttp = new XMLHttpRequest();
@@ -333,7 +317,7 @@
 			var time = today.getHours() + ":" + today.getMinutes();
           	addData(window.myLine, time, this.responseText);
 	    }
-	  	xmlhttp.open("GET", "ajax_wind_speed.php"+getParam, true);
+	  	xmlhttp.open("GET", "ajax_precipitation.php"+getParam, true);
 	  	xmlhttp.send();
 	}
 

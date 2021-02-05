@@ -186,18 +186,15 @@
 		ReadBin();
 		showTable();
 		showtempTable();
-		showWdsp(); 
 		showTemp();
 		removeData(window.myLine);
-		showWnddir();
-	  }
+	}
 	  else{
 		ReadBin();
 		showTemp();
-		showWdsp(); 
+		//showWdsp(); 
 		removeData(window.myLine);
-		showWnddir();
-	  }
+	}
   }
   function pauseTable(){
 	  pause_status = true;
@@ -300,16 +297,7 @@
 		}
 	}
 
-	//function to show wind direction
-	function showWnddir(){
-	    var xmlhttp = new XMLHttpRequest();
-	    xmlhttp.onreadystatechange = function() {
-	      if (this.readyState == 4 && this.status == 200) 
-          document.getElementById("current_wind_direction").innerHTML = this.responseText;
-	    }
-	  xmlhttp.open("GET", "ajax_wind_direction.php"+getParam, true);
-	  xmlhttp.send();
-	}
+
 	//function to show temperature
 	function showTemp(){
 	    var xmlhttp = new XMLHttpRequest();
@@ -330,7 +318,7 @@
           	addData(window.myLine, time, this.responseText);
 	    
 	  }
-	  xmlhttp.open("GET", "ajax_wind_speed.php"+getParam, true);
+	  xmlhttp.open("GET", "ajax_precipitation.php"+getParam, true);
 	  xmlhttp.send();
 	}
 	   //function to show table with weatherdata

@@ -4,5 +4,5 @@
 
 	$stationdata=$_SESSION["measurements"];
 	//ouput the latest dataset of the full data
-	echo $stationdata[sizeof($stationdata)-1]->wdsp;
+	echo $stationdata[sizeof($stationdata)-1]->prcp;
 ?>
