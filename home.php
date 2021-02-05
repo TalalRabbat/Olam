@@ -269,7 +269,6 @@
 	  	var ctx = document.getElementById('canvas').getContext('2d');
 	  	window.myLine = new Chart(ctx, config);
 	};
-
 	//Add data
 	function addData(chart, label, data) {
 	  	chart.data.labels.push(label);
@@ -278,7 +277,6 @@
 	  	});
 	  	chart.update();
 	}
-
 	//Remove first datapoint after two minutes
 	function removeData(chart) {
       	if(Object.keys(window.myLine.data.datasets[0].data).length == 120) {
@@ -288,7 +286,11 @@
 		}
 	}
 
-	//function to show temperature
+
+
+	////
+	//functions
+	////
 	function showTemp() {
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
@@ -299,8 +301,6 @@
 	  	xmlhttp.open("GET", "ajax_temperature.php"+getParam, true);
 	  	xmlhttp.send();
 	}
-
-    //function to show wind speed
 	function showWdsp() {
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
@@ -313,7 +313,9 @@
 	  	xmlhttp.send();
 	}
 
+	////
 	//function to show table with weatherdata
+	////
 	function showTable(){
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
@@ -335,7 +337,9 @@
 	  	xmlhttp.send();
 	}
 	
+	///////////////////////////////////////////////
 	//This function reads the needed csv files once
+	///////////////////////////////////////////////
 	function ReadCSV(){
 	    var xmlhttp = new XMLHttpRequest();
 	    xmlhttp.onreadystatechange = function() {
