@@ -40,7 +40,7 @@
 		if(array_key_exists($station, $allowed_stations)) {
 			return true;
 		} else {
-			return true;
+			return false;
 		}
 	}
 
