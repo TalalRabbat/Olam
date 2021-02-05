@@ -136,7 +136,7 @@
   <div class="section">
 
      <video autoplay="true" loop="true" muted>
-      <source src="images/video.mp4" type="video/mp4">
+      <source src="/images/video.mp4" type="video/mp4">
      </video> 
      
      
