@@ -7,9 +7,9 @@
 	$allowed_stations = array("863150" => "Bella Union", "863300" => "Artigas", "617010" => "Monte Video", "85940" => "Buenos Aires", "619020" => "Rios Gallegos", "889030" => "Santiago", "888890" => "Lima", "888900" => "Bogota", "888910" => "Caracas", "689060" => "Salvador",
 								"863500" => "Rivera","863600" => "Salto","864300" => "Paysandu","864400" => "Melo","864600" => "Paso del Ostoros","864900" => "Mercedes","865000" => "Treinta y Tres","865300" => "Durazno","865450" => "Florida","865600" => "Colonia","865650" => "Rocha",
 								"865750" => "Melilla", "865800" => "Carrasco","865823" => "Capitan Corbetaca","865850" => "Prado","865860" => "Laguna del Sauce",);
-	$stations_temp = array(889030, 888890, 888900, 888910, 689060, 619020, 617010, 85940);
-	$stations_wind = array(889030, 888890, 888900, 888910, 689060, 619020, 617010, 85940);
-	$stations_prcp = array(889030, 888890, 888900, 888910, 689060, 619020, 617010, 85940);
+	$stations_temp = array(889030, 888890, 888900, 888910, 689060, 619020, 617010, 85940, 863300);
+	$stations_wind = array(889030, 888890, 888900, 888910, 689060, 619020, 617010, 85940, 863300);
+	$stations_prcp = array(889030, 888890, 888900, 888910, 689060, 619020, 617010, 85940, 863300);
 	/* This function compares username and password credentials
 	 * and checks if the input is correct
 	 */
@@ -45,7 +45,7 @@
 	}
 
 	/* This function checks if the selected weather station
-	 * is one of the stations that needs temperature measurements
+	 * is one of the stations that needs a form of measurement
 	 */
 	function check_temp_station($station){
 		global $stations_temp;
@@ -55,7 +55,6 @@
 			return false;
 		}
 	}
-
 	function check_precipitation_station($station){
 		global $stations_prcp;
 		if(in_array($station, $stations_prcp)) {
@@ -64,10 +63,6 @@
 			return false;
 		}
 	}
-
-	/* This function checks if the selected weather station
-	 * is one of the stations that needs ind measurements
-	 */
 	function check_wind_station($station){
 		global $stations_wind;
 		if(in_array($station, $stations_wind)) {
@@ -144,19 +139,21 @@
 
 			$temperature=unpack("c",fread($file,1))[1];
 			$temperature_remainder=unpack("c",fread($file,1))[1];
-			fread($file,11);
+			fread($file,20);
 
-			$wdsp=unpack("c",fread($file,1))[1];
-			$wdsp_remainder=unpack("c",fread($file,1))[1]; 
-			fread($file,7);			
+			// $wdsp=unpack("c",fread($file,1))[1];
+			// $wdsp_remainder=unpack("c",fread($file,1))[1]; 
+			// fread($file,7);			
 			
-			$prcp=unpack("c",fread($file,2))[1];	
+			$prcp=unpack("c",fread($file,1))[1];
+			$prcp_remainder=unpack("c",fread($file,1))[1]; 	
+			//fread($file,5);
 			
 			$measurement =new Measurement(); 
             $measurement->stn=intval($name);
  		 	$measurement->date_and_time=date_create("$year-$month-$day $hours:$minutes:$seconds");
 	        $measurement->temp=parse_to_float($temperature,$temperature_remainder);
-			$measurement->wdsp=parse_to_float($wdsp,$wdsp_remainder);
+			//$measurement->wdsp=parse_to_float($wdsp,$wdsp_remainder);
 			$measurement->prcp=parse_to_float($prcp, $prcp_remainder);
 			
 	        

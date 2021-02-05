@@ -4,7 +4,7 @@
 	/*This code checks if the user is logged in*/
 	session_start();
 	check_login();
-	$station_id=617010;
+	$station_id=863300;
 
 	if(check_station($station_id)) {
 		$error_message = false;
@@ -188,12 +188,12 @@
 			ReadCSV();
 			showTable();
 			showtempTable();
-			showWdsp(); 
+			showPrcp(); 
 			removeData(window.myLine);
 			}
 		else{
 			ReadXML();
-			showWdsp(); 
+			showPrcp(); 
 			removeData(window.myLine);
 		}
 	}
@@ -211,7 +211,7 @@
 <script>
   	parser = new DOMParser();
 
-	var getParam="?station=617010";
+	var getParam="?station=863300";
 	//set configuration variable
 	var config = {
 		//Set graph as linegraph
@@ -311,17 +311,7 @@
 	  	xmlhttp.open("GET", "ajax_precipitation.php"+getParam, true);
 	  	xmlhttp.send();
 	}
-	function showWdsp() {
-	    var xmlhttp = new XMLHttpRequest();
-	    xmlhttp.onreadystatechange = function() {
-	      if (this.readyState == 4 && this.status == 200) 
-	      	var today = new Date();
-			var time = today.getHours() + ":" + today.getMinutes();
-          	addData(window.myLine, time, this.responseText);
-	    }
-	  	xmlhttp.open("GET", "ajax_precipitation.php"+getParam, true);
-	  	xmlhttp.send();
-	}
+	
 
 
 	///////////////////////////////////////////////

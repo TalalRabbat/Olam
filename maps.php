@@ -1,6 +1,5 @@
 <?php
   include 'functions.php';
-  include 'map_location_creator.php';
 
   /*This code checks if the user is logged in*/
   session_start();
