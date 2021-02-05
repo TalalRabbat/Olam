@@ -33,4 +33,5 @@
 		$output .= '<p style="width: 80%;"><button onclick="exporttoxml(\'#temp_table\')" style="width: 50%;">Download Table</button><button onclick="continueTable()" style="width: 50%;">Refresh Table</button></p>';
 	}
 	echo $output;
+	//test
 ?>
