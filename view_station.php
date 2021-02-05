@@ -163,7 +163,7 @@
   <div>
 	<div class="container">
 		<?php 
-			if(check_wind_station($station_id) == true){
+			if(check_precipitation_station($station_id) == true){
 				echo '<div style="width:75%; float: right;"><canvas id="canvas" style=""></canvas></div>';
 			}
 			if($error_message) {
