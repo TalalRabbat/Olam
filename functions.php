@@ -1,7 +1,7 @@
 <?php
 	// Set username and password
-	$USER_USERNAME = "user";
-	$USER_PASSWORD = '$argon2i$v=19$m=1024,t=2,p=2$RGVNME4weFFwMmMyd01IZw$a28OeXYplLovOamT/0VITKf3kMsWi+mQVMJjAVKlxcw';
+	$USER_USERNAME = "USER";
+	$USER_PASSWORD = "PASSWORD";
 
 	// Array of the stations used for this project
 	$allowed_stations = array("863150" => "Bella Union", "863300" => "Artigas", "617010" => "Monte Video", "85940" => "Buenos Aires", "619020" => "Rios Gallegos", "889030" => "Santiago", "888890" => "Lima", "888900" => "Bogota", "888910" => "Caracas", "689060" => "Salvador",
@@ -14,11 +14,12 @@
 	 */
 	function verify_login($username, $password) {
 		global $USER_USERNAME, $USER_PASSWORD; 
-		if(password_verify($password, $USER_PASSWORD) == 1 && $username == $USER_USERNAME) {
+		//if(password_verify($password, $USER_PASSWORD) == 1 && $username == $USER_USERNAME) {
+		if($password == $USER_PASSWORD && $username == $USER_USERNAME) {	
 			return true;
 		}
 		else{
-			return true;
+			return false;
 		}
 	}
 	

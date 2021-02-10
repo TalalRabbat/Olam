@@ -26,12 +26,16 @@ if (isset($_POST['login-submit'])) {
 		        }
 		        if($var == False){
 			        $error = "Username or password incorrect, please try again!";
+                    header("Location: ../index.php");
+                    exit();
 		        }   
 	        }
+        } else {
+            echo "whoopsiedoopsie";
         }
         
     }
 
 } else {
-    header("Location: ../public/login.php?error=redirected");
+    header("Location: ../index.php?error=redirected");
 }
