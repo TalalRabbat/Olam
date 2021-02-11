@@ -1,6 +1,6 @@
 <?php
 	include 'functions.php';
-
+	
 	/*This code checks if the user is logged in*/
 	session_start();
 	check_login();

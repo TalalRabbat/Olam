@@ -1,7 +1,4 @@
 <?php
-	// Set username and password
-	$USER_USERNAME = "USER";
-	$USER_PASSWORD = "PASSWORD";
 
 	// Array of the stations used for this project
 	$allowed_stations = array("863150" => "Bella Union", "863300" => "Artigas", "617010" => "Monte Video", "85940" => "Buenos Aires", "619020" => "Rios Gallegos", "889030" => "Santiago", "888890" => "Lima", "888900" => "Bogota", "888910" => "Caracas", "689060" => "Salvador",
