@@ -12,10 +12,8 @@
 	/* This function compares username and password credentials
 	 * and checks if the input is correct
 	 */
-	function verify_login($username, $password) {
-		global $USER_USERNAME, $USER_PASSWORD; 
-		//if(password_verify($password, $USER_PASSWORD) == 1 && $username == $USER_USERNAME) {
-		if($password == $USER_PASSWORD && $username == $USER_USERNAME) {	
+	function verify_login($username, $password) {		
+		if(checkUsername($username) && checkPassword($password)) {	
 			return true;
 		}
 		else{
