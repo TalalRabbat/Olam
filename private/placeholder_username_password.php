@@ -7,8 +7,6 @@
     $USER_USERNAME2 = "USER";
 	$USER_PASSWORD2 = "PASSWORD";
 
-    $usernameblabla = "something";
-
     function checkUsername($variable){
         global $USER_USERNAME2;
         if($variable == $USER_USERNAME2){
