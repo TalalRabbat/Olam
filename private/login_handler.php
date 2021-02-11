@@ -30,10 +30,9 @@ if (isset($_POST['login-submit'])) {
             $login_statement_result = mysqli_stmt_get_result($statement);
         
             if ($row = mysqli_fetch_assoc($login_statement_result)) {
-            //if (true) {
                 //$passwordchecker = verify_login($wachtwoord, $row['wachtwoord']);
                 $passwordchecker = password_verify($wachtwoord, $row['wachtwoord']);
-                $passwordchecker = true;
+                //$passwordchecker = true;
                 if ($passwordchecker == false) {
                     header("Location: ../index.php?error=wrongpassword1");
                     exit();
