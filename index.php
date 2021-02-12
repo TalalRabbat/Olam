@@ -140,12 +140,15 @@
       
       <div class="checkbox mb-3"></div>
       
-      <input value="Enter" name="login-submit" class="btn btn-lg btn-primary btn-block" type="submit">
+      <input value="Enter" name="login-submit" class="btn btn-lg btn-primary btn-block" type="submit">     
 
       <p class="mt-5 mb-3 text-muted">Olam &copy; Copyright <?php echo date("Y"); ?></p>
 
       
     </form>
+    <form action="admin_login_page.php">
+        <input type="submit" value="Admin" />
+      </form>
   </div>
   
   </body>

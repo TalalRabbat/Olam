@@ -8,9 +8,6 @@ if (isset($_POST['login-submit'])) {
     
     $gebruikersnaam = $_POST['username'];
     $wachtwoord = $_POST['password'];
-    //$gebruikersnaam = 'stijn';
-    //$wachtwoord = 'password';
-
 
     if (empty($gebruikersnaam) || empty($wachtwoord)) {
         header("Location: ../public/login.php?error=emptyvalues");
@@ -42,7 +39,7 @@ if (isset($_POST['login-submit'])) {
                     $_SESSION['sessgebruikersnaam'] = $row['Gebruikersnaam'];
                     $_SESSION['logged_in'] = true;
 
-                    header("Location: ../home.php?login=success");
+                    header("Location: admin_registration.php?login=success");
                     exit();
                 } else {
                     header("Location: ../index.php?error=wrongpassword2");
