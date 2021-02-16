@@ -44,18 +44,36 @@ require('../private/database_init.php');
         
         <form action="admin_registration_logic.php" method="POST">        
         
-        <p>Please fill in this form to create an account.</p>
+            <p>Please fill in this form to create an account.</p>
 
-        <label for="username"><strong>Username</strong></label>
-        <input type="text" placeholder="Username" name="username" required>
+            <label for="username"><strong>Username</strong></label>
+            <input type="text" placeholder="Username" name="username" required>
 
-        <label for="password"><strong>Password</strong></label>
-        <input type="password" placeholder="password" name="password" required>        
+            <label for="password"><strong>Password</strong></label>
+            <input type="password" placeholder="password" name="password" required>        
 
-        <label for="password-repeat"><strong>Repeat Password</strong></label>
-        <input type="password" placeholder="password" name="password_repeat" required>        
-        <hr>
-        <button type="submit" name="submit" class="registerbtn">Register</button> 
+            <label for="password-repeat"><strong>Repeat Password</strong></label>
+            <input type="password" placeholder="password" name="password_repeat" required>        
+            <hr>
+            <button type="submit" name="submit" class="registerbtn">Register</button> 
+    
+        </form>
+
+
+
+        <form action="admin_creator.php" method="POST">
+            <p>Please fill in this form to create a NEW ADMIN account.</p>
+
+            <label for="username"><strong>Username</strong></label>
+            <input type="text" placeholder="Username" name="username" required>
+
+            <label for="password"><strong>Password</strong></label>
+            <input type="password" placeholder="password" name="password" required>        
+
+            <label for="password-repeat"><strong>Repeat Password</strong></label>
+            <input type="password" placeholder="password" name="password_repeat" required>        
+            <hr>
+            <button type="submit" name="submit" class="registerbtn">Register</button> 
    
         </form>
         

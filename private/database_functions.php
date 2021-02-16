@@ -1,16 +1,5 @@
 <?php
 
-// function find_admin_by_id($id) { 
-//     global $db; 
-
-//     $sql = "SELECT * FROM admins ";
-//     $sql .= "WHERE admin_id='" . $id . "'";
-//     $result = mysqli_query($db, $sql);
-//     $subject = mysqli_fetch_assoc($result);
-//     mysqli_free_result($result);
-//     return $subject;
-// }
-
 //ADMIN//
 //ADMIN//
 //ADMIN//
@@ -20,7 +9,7 @@ function check_admin_username($db, $username){
     $stmt = mysqli_stmt_init($db);
 
     if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("Location: admin_registration.php?signup=ERRORuserEXISTS");
+        header("Location: admin_registration.php?signup=ERRORadminuserEXISTS");
         exit();
     }
 
@@ -42,7 +31,7 @@ function admin_log_in($db, $username, $wachtwoord){
     $var = check_admin_username($db, $username);
 
     if ($var === false) {
-        header("Location: ../admin_login_page.php?signup=WRONGusername");
+        header("Location: ../admin_login_page.php?signup=WRONGadminusername");
         exit();
     } 
 
@@ -50,7 +39,7 @@ function admin_log_in($db, $username, $wachtwoord){
     $checkPassword = password_verify($wachtwoord, $hashedPassword);
 
     if ($checkPassword === false){ //CHANGE TO FALSE
-        header("Location: ../admin_login_page.php?signup=WRONGpassword");
+        header("Location: ../admin_login_page.php?signup=WRONGadminpassword");
         exit();
     } else {
         session_start();

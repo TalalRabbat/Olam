@@ -9,7 +9,7 @@ $db=db_connect();
 
 $username = $_POST['username'];
 $password = $_POST['password'];
-admin_log_in($db, $username, $wachtwoord);
+admin_log_in($db, $username, $password);
 
 // if (isset($_POST['login-submit'])) {
     
