@@ -130,7 +130,7 @@
     <form class="form-signin" action="private/login_handler.php" method="POST">
       
       <h2 class="h3 mb-3 font-weight-normal">Please log in</h2>
-      <h6 class="h6 mb-6 font-weight-normal text-danger"><?php echo "error"; ?></h6>
+      <h6 class="h6 mb-6 font-weight-normal text-danger"></h6>
       
       <label for="inputEmail" class="sr-only">Username</label>
       <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>

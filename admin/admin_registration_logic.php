@@ -1,13 +1,16 @@
 <?php 
 
-require_once('../private/database_conn_func.php');
-require_once('../functions.php');
-$db=db_connect();
-if(is_post_request()){
+if(isset($_POST["submit"])){
     
     $wachtwoord = $_POST['password'] ?? [''];
     $wachtwoord_her = $_POST['password_repeat'] ?? [''];
     $gebruikersnaam = $_POST['username'] ?? [''];
+
+    require_once('../private/database_conn_func.php');
+    require_once('../private/database_functions.php');
+    require_once('../functions.php');
+
+    $db=db_connect();
 
     //check if variables not empty
     if($wachtwoord != $wachtwoord_her){
@@ -19,14 +22,17 @@ if(is_post_request()){
         header("Location: admin_registration.php?error=badusername&email=" .$email);
         exit();
     } else {
-        $stmt_check = $db->prepare("SELECT * FROM users WHERE username =?");
-        $stmt_check->bind_param("s", $gebruikersnaam);
-        $stmt_check->execute();
-        if($stmt_check->num_rows > 0){
+        // $stmt_check = $db->prepare("SELECT * FROM users WHERE username = ?");
+        // $stmt_check->bind_param("s", $gebruikersnaam);
+        // $stmt_check->execute();
+        if(check_username($db, $gebruikersnaam) == true){
             header("Location: admin_registration.php?signup=ERRORuserEXISTS");
             exit();
+        // }
+        // if($stmt_check->num_rows > 0){
+            
         } else {
-            $stmt_check->close();
+            //$stmt_check->close();
             
             $stmt = $db->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
             $stmt->bind_param("ss", $username, $password);
@@ -49,4 +55,3 @@ if(is_post_request()){
     echo('whoops');
 }
 
-?>

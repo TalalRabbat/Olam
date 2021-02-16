@@ -47,16 +47,7 @@ require('../private/database_init.php');
         <p>Please fill in this form to create an account.</p>
 
         <label for="username"><strong>Username</strong></label>
-        <input type="text" placeholder="Username" name="username" required>       
-
-        <!-- <label for="voornaam"><strong>Voornaam</strong></label>
-        <input type="text" placeholder="Voornaam" name="voornaam" required>        
-
-        <label for="achternaam"><strong>Achternaam</strong></label>
-        <input type="text" placeholder="Achternaam" name="achternaam" required>        
-
-        <label for="email"><strong>Email</strong></label>
-        <input type="text" placeholder="example@email.com" name="email" required>         -->
+        <input type="text" placeholder="Username" name="username" required>
 
         <label for="password"><strong>Password</strong></label>
         <input type="password" placeholder="password" name="password" required>        
@@ -64,7 +55,7 @@ require('../private/database_init.php');
         <label for="password-repeat"><strong>Repeat Password</strong></label>
         <input type="password" placeholder="password" name="password_repeat" required>        
         <hr>
-        <button type="submit" class="registerbtn">Register</button>       
+        <button type="submit" name="submit" class="registerbtn">Register</button>       
         
 
         
