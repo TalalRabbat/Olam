@@ -55,11 +55,10 @@ require('../private/database_init.php');
         <label for="password-repeat"><strong>Repeat Password</strong></label>
         <input type="password" placeholder="password" name="password_repeat" required>        
         <hr>
-        <button type="submit" name="submit" class="registerbtn">Register</button>       
-        
-
-        
+        <button type="submit" name="submit" class="registerbtn">Register</button> 
+   
         </form>
+        
         
 
         <footer class="footer">

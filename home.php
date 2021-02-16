@@ -3,7 +3,7 @@
 	
 	/*This code checks if the user is logged in*/
 	session_start();
-	check_login();
+	//check_login();
 	$station_id=863300;
 
 	if(check_station($station_id)) {

@@ -38,7 +38,7 @@ if(isset($_POST["submit"])){
             $stmt->bind_param("ss", $username, $password);
 
             $username = $gebruikersnaam;
-            $password = password_hash($wachtwoord, PASSWORD_BCRYPT);
+            $password = password_hash($wachtwoord, PASSWORD_DEFAULT);
 
             $stmt->execute();
             $stmt->close();
