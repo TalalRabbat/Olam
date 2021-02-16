@@ -23,13 +23,8 @@ if(isset($_POST["submit"])){
         exit();
     } else {
         if(check_username($db, $gebruikersnaam) == true){
-            header("Location: admin_registration.php?signup=ERRORuserEXISTS");
-            exit();
-            
-        } else {
-            
-            $stmt = $db->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-            $stmt->bind_param("ss", $username, $password);
+            $stmt = $db->prepare("UPDATE users SET password = ? WHERE username = ?");
+            $stmt->bind_param("ss", $password, $username);
 
             $username = $gebruikersnaam;
             $password = password_hash($wachtwoord, PASSWORD_DEFAULT);
@@ -37,8 +32,13 @@ if(isset($_POST["submit"])){
             $stmt->execute();
             $stmt->close();
             $db->close();
-            header("Location: admin_registration.php?signup=success");
+            header("Location: admin_registration.php?changepassword=success");
             exit();
+            
+        } else {
+
+            header("Location: admin_registration.php?changepwd=ERRORuserDOESNOTexist");
+            exit();           
  
         }
     }
