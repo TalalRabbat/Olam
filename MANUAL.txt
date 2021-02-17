@@ -1,3 +1,31 @@
-TODO 
+OLAM AGRI - WEATHER DATA APPLICATION - MANUAL
 
-do me, pahlies
+==LOG IN==
+Log in  with  your password and username.
+Forgotten password can ONLY be changed by [Giuliani Inc.].
+Make sure your password is safe and secure.
+
+==REQUEST USER==
+A [Giuliani Inc.] administrators is able to create a new user.
+Please fill in a user creation request via the IT-portal provided by Olam Agri.
+
+==REQUEST PASSWORD RESET==
+A [Giuliani Inc.] administrators can change a  username's password.
+Please fill in a password change request via the IT-portal provided by Olam Agri. 
+
+==LOG OUT==
+Select  the [Log out] button at the top of every webpage, to log-out the current user.
+
+==VIEW DATA==
+Data relevant to the current page or current station will be presented in real-time.
+To download any data visible on the current webpage, select the [Download Table] button, below any graph or table.
+
+==VIEW STATION==
+To view a specific station and it's data, first select [Stations], at the top of every webpage.
+A map of current and selectable stations will be presented to you.
+Clicking the station reveals a pop-up menu. Here you may click [select this station].
+Double-clicking the station instantly connects to the requested station, without a pop-up menu.
+
+==VIEW HELP
+To view more information and visual aids regarding this page, select [Help], at the top of every webpage.
+The help page reveals more information about all aspects of the Weather Data Application.
