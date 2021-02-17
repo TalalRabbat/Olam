@@ -3,7 +3,7 @@
 
   /*This code checks if the user is logged in*/
   session_start();
-  check_login();
+  //check_login();
 ?>
 <!--Initiate webpage-->
 <!DOCTYPE html>
